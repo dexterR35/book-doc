@@ -1,0 +1,201 @@
+/* Sync Documentation CSS Styles */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+}
+
+/* Headers */
+h1, h2, h3, h4, h5, h6 {
+    color: #2c3e50;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+}
+
+h1 {
+    font-size: 2.5em;
+    text-align: center;
+    border-bottom: 3px solid #3498db;
+    margin-bottom: 30px;
+}
+
+h2 {
+    font-size: 2em;
+    color: #34495e;
+}
+
+h3 {
+    font-size: 1.5em;
+    color: #2c3e50;
+}
+
+/* Code blocks */
+pre {
+    background-color: #2d3748;
+    color: #e2e8f0;
+    padding: 20px;
+    border-radius: 8px;
+    overflow-x: auto;
+    border: 1px solid #4a5568;
+    margin: 20px 0;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+code {
+    background-color: #f1f5f9;
+    color: #1a202c;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9em;
+}
+
+/* Diagrams and tables */
+pre code {
+    background-color: transparent;
+    color: inherit;
+    padding: 0;
+}
+
+/* Box drawing characters for diagrams */
+pre {
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    white-space: pre;
+    word-wrap: normal;
+}
+
+/* Links */
+a {
+    color: #3498db;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-bottom 0.3s ease;
+}
+
+a:hover {
+    border-bottom: 1px solid #3498db;
+}
+
+/* Lists */
+ul, ol {
+    margin: 15px 0;
+    padding-left: 30px;
+}
+
+li {
+    margin: 8px 0;
+}
+
+/* Blockquotes */
+blockquote {
+    border-left: 4px solid #3498db;
+    margin: 20px 0;
+    padding: 15px 20px;
+    background-color: #ecf0f1;
+    border-radius: 0 8px 8px 0;
+}
+
+/* Tables */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 20px 0;
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #3498db;
+    color: white;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+tr:hover {
+    background-color: #e3f2fd;
+}
+
+/* Navigation */
+nav#TOC {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+nav#TOC ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav#TOC li {
+    margin: 8px 0;
+}
+
+nav#TOC a {
+    color: #2c3e50;
+    font-weight: 500;
+}
+
+/* Page breaks for PDF compatibility */
+.page-break {
+    page-break-before: always;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+        font-size: 14px;
+    }
+    
+    h1 {
+        font-size: 2em;
+    }
+    
+    h2 {
+        font-size: 1.5em;
+    }
+    
+    pre {
+        font-size: 12px;
+        padding: 15px;
+    }
+}
+
+/* Print styles */
+@media print {
+    body {
+        background-color: white;
+        font-size: 12pt;
+    }
+    
+    nav#TOC {
+        display: none;
+    }
+    
+    pre {
+        white-space: pre-wrap;
+        word-wrap: break-word;
+    }
+}
