@@ -1,7 +1,7 @@
 
 
 
-# Welcome to Sync Task Management App {.unnumbered .frontmatter}  
+# Welcome to "Sync" Task Management App {.unnumbered .frontmatter}  
 
 
 **Full-Stack:** PostgreSQL + Prisma + Express + Node.js + Zustand + TailwindCSS + JWT + Google API  
@@ -10,7 +10,7 @@
 **GitHub:** [github.com/naeioana](https://github.com/naeioana)  
 **Website:** [testApp.Sync.ro](https://testApp.Sync.ro)  
 **Date:** 2025 
-**Author:** Nae Ioana  {.unnumbered .frontmatter} 
+**Author:** Nae Ioana  
 
 
 
@@ -42,30 +42,30 @@ Un alt element esențial este controlul bazat pe roluri. Aplicația implementeaz
 ## **Prezentare generală a arhitecturii sistemului**
 
 ```
-┌─────────────────────────────────────────────────────────────────────────────────┐
-│                           SYNC ARCHITECTURE                                     │
-├─────────────────────────────────────────────────────────────────────────────────┤
-│                                                                                 │
-│  ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐              │
-│  │   FRONTEND      │    │    BACKEND      │    │   DATABASE      │              │
-│  │                 │    │                 │    │                 │              │
-│  │ • React + Vite  │◄──►│ • Node.js       │◄──►│ • PostgreSQL    │              │
-│  │ • TailwindCSS   │    │ • Express.js    │    │ • Prisma ORM    │              │
-│  │ • Zustand       │    │ • JWT Auth      │    │ • Redis Cache   │              │
-│  │ • Dynamic UI    │    │ • RBAC          │    │ • File Storage  │              │
-│  └─────────────────┘    └─────────────────┘    └─────────────────┘              │
-│           │                       │                       │                     │
-│           │                       │                       │                     │
-│  ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐              │
-│  │   SECURITY      │    │   INTEGRATION   │    │   DEPLOYMENT    │              │
-│  │                 │    │                 │    │                 │              │
-│  │ • Multi-Factor  │    │ • Google APIs   │    │ • Docker        │              │
-│  │ • SSO/SAML      │    │ • Webhooks      │    │ • Cloud Native  │              │
-│  │ • Encryption    │    │ • REST API      │    │ • Auto-scaling  │              │
-│  │ • Compliance    │    │ • Real-time     │    │ • Multi-region  │              │
-│  └─────────────────┘    └─────────────────┘    └─────────────────┘              │
-│                                                                                 │
-└─────────────────────────────────────────────────────────────────────────────────┘
+┌────────────────────────────────────────────────────────────────────────┐
+│                           ARHITECTURA DE SINCRONIZARE                  │
+├────────────────────────────────────────────────────────────────────────┤
+│                                                                        │
+│  ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐     │
+│  │    FRONTEND     │    │     BACKEND     │    │   BAZĂ DE DATE  │     │
+│  │                 │    │                 │    │                 │     │
+│  │ • React + Vite  │◄──►│ • Node.js       │◄──►│ • PostgreSQL    │     │
+│  │ • TailwindCSS   │    │ • Express.js    │    │ • Prisma ORM    │     │
+│  │ • Zustand       │    │ • Auth. JWT     │    │ • Cache Redis   │     │
+│  │ • UI Dinamic    │    │ • RBAC          │    │ • Stocare date  │     │
+│  └─────────────────┘    └─────────────────┘    └─────────────────┘     │
+│           │                       │                       │            │
+│           │                       │                       │            │
+│  ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐     │
+│  │   SECURITATE    │    │    INTEGRARE    │    │   IMPLEMENTARE  │     │
+│  │                 │    │                 │    │                 │     │
+│  │ • Multi-Factor  │    │ • API-uri Google│    │ • Docker        │     │
+│  │ • SSO/SAML      │    │ • Webhooks      │    │ • Cloud Native  │     │
+│  │ • Criptare      │    │ • API REST      │    │ • Auto-Scalare  │     │
+│  │ • Conformitate  │    │ • Timp Real     │    │ • Multi-regiune │     │
+│  └─────────────────┘    └─────────────────┘    └─────────────────┘     │
+│                                                                        │
+└────────────────────────────────────────────────────────────────────────┘
 ```
 
 ## **Ce face „SYNC” special**  
@@ -91,509 +91,502 @@ Un alt element esențial este controlul bazat pe roluri. Aplicația implementeaz
 - **Integrare AI**: Machine learning pentru analiză de conținut
 
 
-## Core Features Overview
+## Prezentare generală a funcțiilor de bază
+
+### Managementul panoului Kanban
+
+Elementul central al aplicației este un sistem Kanban avansat, care pune la dispoziție:
 
 
-### Kanban Board Management
-
-The heart of the application is a sophisticated Kanban board system that provides:
-
-**Advanced Kanban Features:**  
-- **Drag & Drop**: Intuitive task movement between columns  
-- **Priority Colors**: Visual priority indicators (Red=High, Yellow=Medium, Green=Low)  
-- **Progress Tracking**: Real-time completion percentages  
-- **Filtering**: Sort by assignee, priority, due date, or tags  
-- **Search**: Quick task discovery across all boards  
-- **Real-Time Updates**: Live collaboration with team members  
-- **Mobile Responsive**: Optimized for all device sizes  
-- **Custom Workflows**: Configurable board layouts and statuses  
-- **Navigation**: Responsive navigation with user menu and auth  
-- **Dashboard**: Real-time interactive charts and metrics  
-- **Kanban Board**: Drag & drop with live updates and filters  
-- **Task Forms**: Validation, auto-save, and rich text editor  
-- **File Upload**: Drag & drop with progress bar and preview  
-- **User Profile**: Settings, preferences, and activity tracking   
+- **Drag & Drop**: Mutarea intuitivă a sarcinilor între coloane  
+- **Culori pentru Prioritate**: Indicatori vizuali ai priorității (Roșu=Ridicată, Galben=Medie, Verde=Scăzută)  
+- **Urmărirea Progresului**: Procente de finalizare în timp real  
+- **Filtrare**: Sortare după responsabil, prioritate, termen sau etichete  
+- **Căutare**: Găsire rapidă a sarcinilor pe toate panourile  
+- **Actualizări în Timp Real**: Colaborare live cu membrii echipei  
+- **Compatibil pe Mobil**: Optimizat pentru toate dimensiunile de ecran  
+- **Fluxuri de Lucru Personalizate**: Configurare flexibilă a panourilor și statusurilor  
+- **Navigare**: Navigare adaptivă cu meniu utilizator și autentificare  
+- **Tablou de Bord**: Grafice și metrici interactive în timp real  
+- **Panou Kanban**: Drag & drop cu actualizări live și filtre  
+- **Formulare pentru Sarcini**: Validare, auto-salvare și editor de text îmbogățit  
+- **Încărcare Fișiere**: Drag & drop cu bară de progres și previzualizare  
+- **Profil Utilizator**: Setări, preferințe și urmărirea activității  
 
 ```
 ┌─────────────────┬─────────────────┬─────────────────┬─────────────────┐
-│      TODO       │   IN PROGRESS   │    REVIEW       │      DONE       │
+│    DE FĂCUT     │     ÎN CURS     │  ÎN REVIZUIRE   │   FINALIZAT     │
 ├─────────────────┼─────────────────┼─────────────────┼─────────────────┤
-│ • Task 1        │ • Task 4        │ • Task 6        │ • Task 8        │
-│ • Task 2        │ • Task 5        │ • Task 7        │ • Task 9        │
-│ • Task 3        │                 │                 │ • Task 10       │
+│ • Sarcină 1     │ • Sarcină 4     │ • Sarcină 6     │ • Sarcină 8     │
+│ • Sarcină 2     │ • Sarcină 5     │ • Sarcină 7     │ • Sarcină 9     │
+│ • Sarcină 3     │                 │                 │ • Sarcină 10    │
 └─────────────────┴─────────────────┴─────────────────┴─────────────────┘
 ```
 
-### TailwindCSS Design System
+### Sistem de Design TailwindCSS
 
-TailwindCSS system for consistent, responsive, and beautiful interfaces:
+Sistem TailwindCSS pentru interfețe consistente, responsive și atractive:
 
-- **Color Scheme**: Primary, secondary, accent, success, warning, error themes
-- **Typography**: Headings, body text, monospace, responsive design
-- **Components**: Buttons, cards, forms, modals, and alerts
-- **Responsive**: Mobile-first with adaptive breakpoints and grid system
-- **Animations**: Smooth transitions, hover effects, and loading states
-- **Utilities**: Comprehensive spacing, flexbox, and grid utilities  
+- **Schema de culori**: Tematici pentru primar, secundar, accent, succes, avertisment, eroare  
+- **Tipografie**: Titluri, text de corp, monospace, design responsive  
+- **Componente**: Butoane, carduri, formulare, ferestre modale și alerte  
+- **Responsive**: Mobile-first cu puncte de întrerupere adaptabile și sistem grid  
+- **Animații**: Tranziții line, efecte la hover și stări de încărcare  
+- **Utilitare**: Spațiere completă, flexbox și utilitare pentru grid  
 
-### CRUD Operations
+### Operațiuni CRUD
 
-Full Create, Read, Update, Delete functionality for:
+Funcționalitate completă de Create, Read, Update, Delete pentru:
 
-- **Tasks**: Title, description, status, priority, due dates
-- **Projects**: Organization and categorization
-- **Users**: Profile management and role assignment
-- **Attachments**: File uploads and management
+- **Sarcini**: Titlu, descriere, status, prioritate, termene  
+- **Proiecte**: Organizare și categorisire  
+- **Utilizatori**: Administrarea profilului și atribuirea rolurilor  
+- **Atașamente**: Încărcare și gestionare fișiere  
 
-###  Database Transaction Architecture
+### Arhitectura Tranzacțiilor în Baza de Date
 
 
 ```
-    ┌─────────────────────────────────────────────────────────────────────────────┐
-    │                           DATABASE TRANSACTION FLOW                         │
-    ├─────────────────────────────────────────────────────────────────────────────┤
-    │                                                                             │
-    │  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐   │
-    │  │   USER      │───►│   TASK      │───►│  ATTACHMENT │───►│   PROJECT   │   │
-    │  │   CREATES   │    │   CREATED   │    │   UPLOADED  │    │   UPDATED   │   │
-    │  └─────────────┘    └─────────────┘    └─────────────┘    └─────────────┘   │
-    │           │                   │                   │                   │     │
-    │           ▼                   ▼                   ▼                   ▼     │
-    │  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐   │
-    │  │   VALIDATE  │    │   ASSIGN    │    │   STORE     │    │   NOTIFY    │   │
-    │  │   INPUT     │    │   TO USER   │    │   FILE      │    │   TEAM      │   │
-    │  └─────────────┘    └─────────────┘    └─────────────┘    └─────────────┘   │
-    │           │                   │                   │                   │     │
-    │           ▼                   ▼                   ▼                   ▼     │
-    │  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐   │
-    │  │   COMMIT    │    │   UPDATE    │    │   INDEX     │    │   LOG       │   │
-    │  │   USER      │    │   KANBAN    │    │   SEARCH    │    │   ACTIVITY  │   │
-    │  └─────────────┘    └─────────────┘    └─────────────┘    └─────────────┘   │
-    │                                                                             │
-    └─────────────────────────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                      FLUXUL TRANZACȚIEI ÎN BAZA DE DATE                     │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐   │
+│  │   CREARE    │───►│   SARCINĂ   │───►│   ATAȘAMENT │───►│   PROIECT   │   │
+│  │   USER      │    │   CREATĂ    │    │   ÎNCĂRCAT  │    │  ACTUALIZAT │   │
+│  └─────────────┘    └─────────────┘    └─────────────┘    └─────────────┘   │
+│           │                   │                   │                   │     │
+│           ▼                   ▼                   ▼                   ▼     │
+│  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐   │
+│  │   VALIDARE  │    │   ALOCARE   │    │   STOCARE   │    │  NOTIFICARE │   │
+│  │   INPUT     │    │  UTILIZATOR │    │   FIȘIER    │    │   ECHIPĂ    │   │
+│  └─────────────┘    └─────────────┘    └─────────────┘    └─────────────┘   │
+│           │                   │                   │                   │     │
+│           ▼                   ▼                   ▼                   ▼     │
+│  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐   │
+│  │   SALVARE   │    │ ACTUALIZARE │    │   INDEXARE  │    │ JURNALIZARE │   │
+│  │  UTILIZATOR │    │   KANBAN    │    │   CĂUTARE   │    │  ACTIVITATE │   │
+│  └─────────────┘    └─────────────┘    └─────────────┘    └─────────────┘   │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
 ```
 
 ### Role-Based Access Control (RBAC)
 
 **Permisiuni:**  
+```
+ ─────────────────────────────────────────────────────────────────────────────────────── 
+| Acțiune                    | Super Admin| Company Admin | Project Manager| Team Member|  
+|----------------------------|------------|---------------|----------------|------------|  
+| **Gestionare Utilizatori** | x          | x             | -              | -          |  
+| **Creare Proiect**         | x          | x             | x              | -          |  
+| **Gestionare Sarcini**     | x          | x             | x              | x          |  
+| **Acces Fișiere**          | x          | x             | x              | x          |  
+| **Setări Sistem**          | x          | x             | -              | -          |
+└───────────────────────────────────────────────────────────────────────────────────────┘
+```
 
-| Acțiune                | Super Admin| Company Admin | Project Manager| Team Member|  
-|------------------------|------------|---------------|----------------|------------|  
-| **User Management**    | x          | x             | -              | -          |  
-| **Project Creation**   | x          | x             | x              | -          |  
-| **Task Management**    | x          | x             | x              | x          |  
-| **File Access**        | x          | x             | x              | x          |  
-| **System Settings**    | x          | x             | -              | -          |  
+### Gestionarea Fișierelor
 
+Soluție integrată Google API pentru gestionarea fișierelor la nivel enterprise:
 
-###  File Management
+**Funcții de Securitate pentru Fișiere:**  
+- **Validare Multi-Strat**: Verificarea extensiei fișierului, tipului MIME și numărului magic  
+- **Scanare Antivirus**: Integrare cu servicii de securitate pentru detectarea malware-ului  
+- **Criptare**: Criptare AES-256 pentru toate fișierele stocate  
+- **Control Acces**: Permisiuni bazate pe roluri și jurnalizare audit  
+- **Control Versiuni**: Versionare fișiere și istoric modificări  
+- **Backup & Recuperare**: Backup automat cu recuperare la un punct în timp  
 
-Integrated Google API solution for enterprise-grade file handling:
+### Arhitectura Stratului de Securitate
 
+- **Stratul Client**:  
+  - Aplicarea HTTPS & certificate pinning  
+  - Protecție XSS & Politica de Securitate a Conținutului (CSP)  
+  - Token-uri CSRF & cookie-uri SameSite  
+  - Sanitizarea inputului & codare output  
+  - Autentificare Multi-Factor (MFA)  
+  - Gestionare securizată a sesiunilor cu timeout  
+  - Identificarea dispozitivului (device fingerprinting)
 
-**File Security Features:**  
-- **Multi-Layer Validation**: File extension, MIME type, and magic number verification  
-- **Virus Scanning**: Integration with security services for malware detection  
-- **Encryption**: AES-256 encryption for all stored files  
-- **Access Control**: Role-based permissions and audit logging  
-- **Version Control**: File versioning and change history  
-- **Backup & Recovery**: Automated backup with point-in-time recovery  
+- **Stratul de Transport**:  
+  - Criptare TLS 1.3 & perfect forward secrecy  
+  - Validarea certificatelor & headere HSTS  
+  - Limitare rată & protecție DDoS  
+  - Filtrare IP & restricții geolocație  
+  - TLS mutual cu certificate client  
+  - API gateway securizat cu throttling  
+  - Rotirea certificatelor & gestionarea ciclului de viață  
 
-### 8. Security Layer Architecture
+- **Stratul Aplicație**:  
+  - Autentificare JWT & rotație token refresh  
+  - Controlul accesului bazat pe roluri (RBAC)  
+  - Validare & sanitizare input  
+  - Prevenirea SQL injection prin query-uri parametrizate  
+  - Gestionare secrete cu integrare Vault  
+  - Limitare rată API per utilizator/token  
+  - Gestionare sigură a erorilor & logare  
+  - Monitorizare securitate & alerte (SIEM, IDS/IPS)  
 
+- **Stratul Date**:  
+  - Criptare baze de date în repaus  
+  - Jurnalizare audit & monitorizare activitate  
+  - Backup criptat & gestionare sigură a cheilor  
+  - Conformitate GDPR, HIPAA, ISO 27001  
+  - Mascare date & criptare la nivel de câmp  
+  - Politici sigure de păstrare a datelor  
+  - Backup-uri imuabile pentru protecție ransomware  
+  - Acces baze de date Zero Trust    
 
-
-- **Client Layer**:   
-  - HTTPS enforcement & certificate pinning  
-  - XSS protection & Content Security Policy  
-  - CSRF tokens & SameSite cookies  
-  - Input sanitization & output encoding  
-  - Multi-Factor Authentication (MFA)  
-  - Secure session management with timeouts  
-  - Device fingerprinting
-
-- **Transport Layer**:   
-  - TLS 1.3 encryption & perfect forward secrecy  
-  - Certificate validation & HSTS headers  
-  - Rate limiting & DDoS protection  
-  - IP filtering & geolocation restrictions  
-  - Mutual TLS with client certificates  
-  - Secure API gateway with throttling  
-  - Certificate rotation & lifecycle management  
-
-- **Application Layer**: 
-  - JWT authentication & refresh token rotation  
-  - Role-based access control (RBAC)  
-  - Input validation & sanitization   
-  - SQL injection prevention with parameterized queries  
-  - Secrets management with Vault integration  
-  - API rate limiting per user/token  
-  - Secure error handling & logging  
-  - Security monitoring & alerts (SIEM, IDS/IPS)  
-
-- **Data Layer**:   
-  - Database encryption at rest  
-  - Audit logging & activity monitoring  
-  - Backup encryption & secure key management  
-  - Compliance with GDPR, HIPAA, ISO 27001  
-  - Data masking & field-level encryption  
-  - Secure data retention policies  
-  - Immutable backups for ransomware protection  
-  - Zero Trust database access    
-
-## Application Architecture
-
-### Frontend Technologies
+## Arhitectura Aplicației
 
 
+### Tehnologii Frontend
 
 **React 18 + Vite**  
-- React features (hooks, context, suspense)  
-- Fast development server with HMR  
-- Optimized production builds  
-- Tree-shaking for minimal bundle size  
-- Dynamic component system with atomic design  
-- Responsive mobile-first approach  
+- Funcționalități React (hooks, context, suspense)  
+- Server de dezvoltare rapid cu HMR  
+- Build-uri de producție optimizate  
+- Tree-shaking pentru dimensiuni minime ale bundle-ului  
+- Sistem de componente dinamice cu design atomic  
+- Abordare responsive, mobile-first  
 
-**Zustand State Management**  
-- Lightweight and performant  
-- JavaScript support with type safety  
-- Middleware capabilities for logging and persistence  
-- DevTools integration for debugging  
-- Real-time state synchronization  
-- Modular store architecture  
+**Zustand pentru Managementul Stării**  
+- Ușor și performant  
+- Suport JavaScript cu siguranță tipică  
+- Capacități middleware pentru logare și persistență  
+- Integrare DevTools pentru debugging  
+- Sincronizare stări în timp real  
+- Arhitectură modulară a magazinului de stări  
 
 **TailwindCSS**  
-- Utility-first CSS framework  
-- Responsive design system with breakpoints  
-- Custom component library with design tokens  
-- Performance optimized with PurgeCSS  
-- Dark mode and theme switching  
-- Accessibility-first design principles  
+- Framework CSS utility-first  
+- Sistem de design responsive cu breakpoint-uri  
+- Bibliotecă de componente personalizate cu design tokens  
+- Performanță optimizată cu PurgeCSS  
+- Mod întunecat și schimbare temă  
+- Principii de design centrate pe accesibilitate  
 
-### Backend Technologies
+### Tehnologii Backend
 
 **Node.js + Express**  
-- Event-driven architecture with non-blocking I/O  
-- Comprehensive middleware ecosystem  
-- RESTful API design with GraphQL support  
-- Async/await support for modern JavaScript  
-- Real-time WebSocket integration  
-- Advanced error handling and logging  
+- Arhitectură event-driven cu I/O non-blocant  
+- Ecosistem complet de middleware  
+- Design API RESTful cu suport GraphQL  
+- Suport async/await pentru JavaScript modern  
+- Integrare WebSocket în timp real  
+- Gestionare avansată a erorilor și logare  
 
 **PostgreSQL + Prisma**  
-- ACID compliance for data integrity  
-- Type-safe database operations with auto-generated types  
-- Automated migration management  
-- Connection pooling and query optimization  
-- Advanced indexing strategies  
-- Full-text search capabilities  
+- Conformitate ACID pentru integritatea datelor  
+- Operațiuni tip-safe în baza de date cu tipuri generate automat  
+- Management automat al migrărilor  
+- Pooling de conexiuni și optimizare query-uri  
+- Strategii avansate de indexare  
+- Capabilități de căutare full-text  
 
-### Security Technologies
+### Tehnologii de Securitate
 
-**JWT + HTTP-Only Cookies**  
-- Stateless authentication with secure token rotation  
-- HTTP-only cookies for XSS protection  
-- Automatic expiration and refresh token support  
-- Multi-factor authentication (MFA) integration  
-- Session management and device tracking  
+**JWT + Cookie-uri HTTP-Only**  
+- Autentificare stateless cu rotație sigură a token-urilor  
+- Cookie-uri HTTP-only pentru protecție XSS  
+- Expirare automată și suport pentru token refresh  
+- Integrare autentificare multi-factor (MFA)  
+- Gestionare sesiuni și urmărire dispozitive  
 
-**Security Middleware**  
-- Helmet security headers for comprehensive protection  
-- CSRF protection with token validation  
-- Advanced rate limiting and DDoS protection  
-- Multi-layer input validation and sanitization  
-- Real-time threat detection and monitoring  
+**Middleware de Securitate**  
+- Headere de securitate Helmet pentru protecție completă  
+- Protecție CSRF cu validare token  
+- Limitare avansată a ratei și protecție DDoS  
+- Validare și sanitizare multi-strat a inputului  
+- Detectare și monitorizare amenințări în timp real  
 
 
 
-### 9 Task Status Flow & Pending Status Management
+
+### Fluxul Statusului Sarcinilor & Gestionarea Stării În Așteptare
 
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                           TASK STATUS FLOW DIAGRAM                          │
+│                   DIAGRAMA FLUXULUI DE STĂRI PENTRU SARCINI                 │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
 │  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐   │
-│  │   DRAFT     │───►│   PENDING   │───►│   ACTIVE    │───►│   REVIEW    │   │
+│  │    CIORNĂ   │───►│ ÎN AȘTEPTARE│───►│    ACTIV    │───►│ ÎN REVIZUIRE│   │
 │  │             │    │             │    │             │    │             │   │
-│  │ • Created   │    │ • Approved  │    │• In Progress│    │ • Completed │   │
-│  │ • Not       │    │ • Assigned  │    │ • Updated   │    │ • Ready for │   │
-│  │   Assigned  │    │ • Scheduled │    │ • Tracked   │    │   Approval  │   │
+│  │ • Creată    │    │ • Aprobată  │    │ • În curs   │    │ • Terminată │   │
+│  │ • Nealocată │    │ • Alocată   │    │• Actualizată│    │ • Gata de   │   │
+│  │             │    │ • Planificată│   │ • Urmărită  │    │   Aprobare  │   │
 │  └─────────────┘    └─────────────┘    └─────────────┘    └─────────────┘   │
 │           │                   │                   │                   │     │
 │           ▼                   ▼                   ▼                   ▼     │
 │  ┌─────────────┐    ┌──────────────┐    ┌─────────────┐    ┌─────────────┐  │
-│  │   ARCHIVED  │    │   BLOCKED    │    │   ON HOLD   │    │   COMPLETED │  │
+│  │   ARHIVAT   │    │    BLOCAT    │    │  SUSPENDAT  │    │  FINALIZAT  │  │
 │  │             │    │              │    │             │    │             │  │
-│  │ • Historical│    │ • Depndencies│    │ • Waiting   │    │ • Delivered │  │
-│  │ • Reference │    │ • Issues     │    │ • Resources │    │ • Closed    │  │
-│  │ • Analytics │    │ • Resolution │    │ • Approval  │    │ • Archive   │  │
+│  │ • Istoric   │    │ • Dependințe │    │ • Așteptare │    │ • Livrată   │  │
+│  │ • Referință │    │ • Probleme   │    │ • Resurse   │    │ • Închisă   │  │
+│  │ • Analiză   │    │ • Rezolvare  │    │ • Aprobare  │    │ • Arhivare  │  │
 │  └─────────────┘    └──────────────┘    └─────────────┘    └─────────────┘  │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
 
-**Pending Status Features:**
-- **Approval Workflow**: Tasks require manager approval before activation
-- **Dependency Tracking**: Tasks blocked by incomplete prerequisites
-- **Resource Allocation**: Tasks waiting for available team members
-- **Priority Queuing**: High-priority tasks move to front of pending queue
-- **Scheduling**: Tasks scheduled for future execution dates
+**Funcționalități pentru Starea În Așteptare:**  
+- **Flux de Aprobare**: Sarcinile necesită aprobarea managerului înainte de activare  
+- **Urmărirea Dependențelor**: Sarcinile blocate de prerechizite nefinalizate  
+- **Alocarea Resurselor**: Sarcinile așteaptă disponibilitatea membrilor echipei  
+- **Prioritizarea Cozii**: Sarcinile cu prioritate înaltă trec în fața cozii de așteptare  
+- **Programare**: Sarcinile sunt planificate pentru date viitoare de execuție  
 
-### 10. Database Query Architecture & Optimization
+### 10. Arhitectura Interogărilor în Baza de Date & Optimizare
 
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                           DATABASE QUERY ARCHITECTURE                       │
+│                   ARHITECTURA INTEROGĂRILOR BAZEI DE DATE                   │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
 │  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐   │
-│  │   CLIENT    │───►│   API       │───►│   SERVICE   │───►│   PRISMA    │   │
-│  │   REQUEST   │    │   VALIDATION│    │   LAYER     │    │   ORM       │   │
+│  │   CERERE    │───►│  VALIDARE   │───►│    STRAT    │───►│   PRISMA    │   │
+│  │   CLIENT    │    │     API     │    │   SERVICII  │    │     ORM     │   │
 │  └─────────────┘    └─────────────┘    └─────────────┘    └─────────────┘   │
 │           │                   │                   │                   │     │
 │           ▼                   ▼                   ▼                   ▼     │
 │  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐   │
-│  │   CACHE     │    │   QUERY     │    │   INDEX     │    │   DATABASE  │   │
-│  │   LAYER     │    │   BUILDER   │    │   OPTIMIZER │    │   EXECUTION │   │
+│  │    STRAT    │    │ CONSTRUCTOR │    │ OPTIMIZATOR │    │   EXECUȚIE  │   │
+│  │    CACHE    │    │  INTEROGĂRI │    │   INDEXURI  │    │  BAZĂ DATE  │   │
 │  │             │    │             │    │             │    │             │   │
-│  │ • Redis     │    │ • Dynamic   │    │ • Composite │    │ • Connection│   │
-│  │ • Memory    │    │ • Filters   │    │ • Partial   │    │   Pooling   │   │
-│  │ • CDN       │    │ • Sorting   │    │ • Full-text │    │ • Prepared  │   │
+│  │ • Redis     │    │ • Dinamice  │    │ • Compuse   │    │ • Pooling   │   │
+│  │ • Memorie   │    │ • Filtre    │    │ • Parțiale  │    │ • Pregătite │   │
+│  │ • CDN       │    │ • Sortare   │    │ • Full-text │    │             │   │
 │  └─────────────┘    └─────────────┘    └─────────────┘    └─────────────┘   │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
 
-**Query Optimization Features:**
-- **Index Strategy**: Strategic indexing for common query patterns
-- **Query Caching**: Redis-based caching for frequently accessed data
-- **Connection Pooling**: Efficient database connection management
-- **Prepared Statements**: SQL injection prevention and performance
-- **Query Analysis**: Performance monitoring and optimization
+**Funcționalități de Optimizare a Interogărilor:**  
+- **Strategia Indexării**: Indexare strategică pentru tiparele comune de interogări  
+- **Cache pentru Interogări**: Caching bazat pe Redis pentru date accesate frecvent  
+- **Pooling de Conexiuni**: Gestionare eficientă a conexiunilor la baza de date  
+- **Instrucțiuni Pregătite**: Prevenirea SQL injection și îmbunătățirea performanței  
+- **Analiza Interogărilor**: Monitorizarea performanței și optimizarea interogărilor  
 
-### 11. Algorithm & Sorting Implementation
+### 11. Implementarea Algoritmilor & Sortare
 
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                           ALGORITHM & SORTING SYSTEM                        │
+│                       SISTEM DE ALGORITMI ȘI SORTARE                        │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
 │  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐   │
-│  │   INPUT     │───►│   VALIDATE  │───►│   PROCESS   │───►│   OUTPUT    │   │
-│  │   DATA      │    │   & SANITIZE│    │   & SORT    │    │   RESULT    │   │
+│  │   DATE DE   │───►│  VALIDARE & │───►│ PROCESARE & │───►│ REZULTAT DE │   │
+│  │   INTRARE   │    │  IGIENIZARE │    │   SORTARE   │    │   IEȘIRE    │   │
 │  └─────────────┘    └─────────────┘    └─────────────┘    └─────────────┘   │
 │           │                   │                   │                   │     │
 │           ▼                   ▼                   ▼                   ▼     │
 │  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐   │
-│  │   REGEX     │    │   ALGORITHM │    │   SORTING   │    │   FILTERING │   │
-│  │   VALIDATION│    │   SELECTION │    │   STRATEGY  │    │   & SEARCH  │   │
+│  │   VALIDARE  │    │   SELECȚIE  │    │  STRATEGIE  │    │  FILTRARE & │   │
+│  │    REGEX    │    │   ALGORITM  │    │  DE SORTARE │    │   CĂUTARE   │   │
 │  │             │    │             │    │             │    │             │   │
-│  │ • Email     │    │ • QuickSort │    │ • Priority  │    │ • Full-text │   │
-│  │ • Phone     │    │ • MergeSort │    │ • Due Date  │    │ • Fuzzy     │   │
-│  │ • URL       │    │ • HeapSort  │    │ • Status    │    │ • Tag-based │   │
+│  │ • Email     │    │ • QuickSort │    │ • Prioritate│    │ • Full-text │   │
+│  │ • Telefon   │    │ • MergeSort │    │• Dată Limită│    │ • Fuzzy     │   │
+│  │ • URL       │    │ • HeapSort  │    │ • Status    │    │• Pe Etichete│   │
 │  └─────────────┘    └─────────────┘    └─────────────┘    └─────────────┘   │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
 
-**Algorithm Features:**
-- **Adaptive Sorting**: Algorithm selection based on data size and characteristics
-- **Priority Queuing**: Efficient task prioritization using heap data structures
-- **Search Algorithms**: Binary search for sorted data, linear search for unsorted
-- **Data Validation**: Comprehensive regex patterns for input validation
-- **Performance Monitoring**: Real-time algorithm performance metrics
+**Funcționalități Algoritmi:**  
+- **Sortare Adaptivă**: Selectarea algoritmului în funcție de dimensiunea și caracteristicile datelor  
+- **Prioritizarea Cozii**: Prioritizarea eficientă a sarcinilor folosind structuri de date heap  
+- **Algoritmi de Căutare**: Căutare binară pentru date sortate, căutare liniară pentru date nesortate  
+- **Validarea Datelor**: Modele regex complexe pentru validarea inputului  
+- **Monitorizarea Performanței**: Metrici de performanță ale algoritmilor în timp real  
 
-### 12. Dynamic Button & Form Components
+### 12. Componente Dinamice pentru Butoane & Formulare
 
-**Dynamic Component Features:**
-- **Context-Aware Rendering**: Components adapt based on user context
-- **Permission-Based Display**: UI elements show/hide based on user roles
-- **Responsive Behavior**: Components adapt to different screen sizes
-- **State Synchronization**: Real-time updates across all components
-- **Accessibility**: ARIA labels and keyboard navigation support
+**Funcționalități Componente Dinamice:**  
+- **Randare Contextuală**: Componentele se adaptează în funcție de contextul utilizatorului  
+- **Afișare Bazată pe Permisiuni**: Elementele UI se arată/ascund în funcție de rolurile utilizatorului  
+- **Comportament Responsive**: Componentele se adaptează la diferite dimensiuni de ecran  
+- **Sincronizare Stări**: Actualizări în timp real pe toate componentele  
+- **Accesibilitate**: Etichete ARIA și suport pentru navigare cu tastatura  
 
+## **Rezumat Capitol: Acoperire Tehnică**
 
+### **Ce Am Acoperit**
+- **Funcționalități de Bază**: Panouri Kanban, componente dinamice, colaborare în timp real  
+- **Stack Tehnic**: Ecosistem modern JavaScript cu securitate enterprise  
+- **Pattern-uri de Arhitectură**: Design scalabil, ușor de întreținut și pregătit pentru producție  
+- **Metrici de Performanță**: Timp de răspuns sub 500ms cu 1000+ utilizatori simultan  
 
-##  **Chapter Summary:  Technical Coverage**
+### **Realizări Tehnice Cheie**  
+- **Performanță**: Optimizat pentru operațiuni la scară enterprise  
+- **Securitate**: Protecție multi-strat conform standardelor de conformitate  
+- **Scalabilitate**: Arhitectură cloud-native cu auto-scalare  
+- **Experiență Utilizator**: Componente dinamice cu design responsive  
+- **Experiență Dezvoltator**: Instrumente moderne și pattern-uri clare  
 
+### **Ce Urmează**  
+Următoarele capitole vor aprofunda aspectele tehnice:  
+- **Configurare Proiect**: Instalarea proiectului  
+- **Dezvoltare Backend**: Arhitectura serverului și design baza de date  
+- **Arhitectura Frontend**: Componente React și managementul stării  
+- **Securitate & Autentificare**: Protecție la nivel enterprise  
+- **Deployment & Scalare**: Strategii de implementare în producție  
+- **Management Sarcini**: Implementarea Kanban și workflow  
+- **Deployment & Scalare**: Strategii de implementare în producție  
 
-### **What We've Covered**
+# Capitolul 2: Configurare Proiect & Structură Folder
 
-- **Core Features**: Kanban boards, dynamic components, real-time collaboration
-- **Technical Stack**: Modern JavaScript ecosystem with enterprise-grade security
-- **Architecture Patterns**: Scalable, maintainable, and production-ready design
-- **Performance Metrics**: Sub-500ms response times with 1000+ concurrent users
+## Exemplu Configurare Dezvoltare
 
+**Cerințe Sistem:**  
+- **Node.js**: Versiunea 18.0.0 sau mai mare (LTS recomandat)  
+- **PostgreSQL**: Versiunea 14.0 sau mai mare  
+- **Git**: Versiunea 2.30.0 sau mai mare  
+- **Manager Pachete**: npm 8.0.0+ sau yarn 1.22.0+  
 
-###  Key Technical Achievements
-- **Performance**: Optimized for enterprise-scale operations
-- **Security**: Multi-layer protection with compliance standards
-- **Scalability**: Cloud-native architecture with auto-scaling
-- **User Experience**: Dynamic components with responsive design
-- **Developer Experience**: Modern tools and clear patterns
-
-
-### **What's Coming Next**
-The following chapters will dive into technical aspect:
-- **Project Setup**: install project
-- **Backend Development**: Server architecture and database design
-- **Frontend Architecture**: React components and state management
-- **Security & Authentication**: Enterprise-grade protection
-- **Deployment & Scaling**: Production deployment strategies
-- **Task Management**: Kanban implementation and workflow
-- **Deployment & Scaling**: Production deployment strategies
-
-
-
-# Chapter 2: Project Setup & Folder Structure
-
-## Development Example Setup
-
-**System Requirements:**
-- **Node.js**: Version 18.0.0 or higher (LTS recommended)
-- **PostgreSQL**: Version 14.0 or higher
-- **Git**: Version 2.30.0 or higher
-- **Package Manager**: npm 8.0.0+ or yarn 1.22.0+
-
-**Development Tools:**
-- **Code Editor**: VS Code with recommended extensions
-- **Database Client**: pgAdmin, DBeaver, or TablePlus
-- **API Testing**: Postman or Insomnia
-- **Version Control**: Git with proper branching strategy
-
-
-### Example Folder Structure
+**Instrumente Dezvoltare:**  
+- **Editor Cod**: VS Code cu extensiile recomandate  
+- **Client Bază de Date**: pgAdmin, DBeaver sau TablePlus  
+- **Testare API**: Postman sau Insomnia  
+- **Control Versiuni**: Git cu strategie corectă de branching  
+ 
+### Exemplu Structură Folder 
+ 
+``` 
+Sigur, iată traducerea structurii de fișiere în limba română:
 
 ```
 task-manager-app/
-├── 📁 client/                          # Frontend React Application
-│   ├── 📁 public/                      # Static assets
-│   │   ├── 📄 index.html              # Main HTML template
-│   │   ├── 📄 favicon.ico             # Application icon
-│   │   └── 📄 manifest.json           # PWA manifest
-│   ├── 📁 src/                        # Source code
-│   │   ├── 📁 components/             # Reusable UI components
-│   │   │   ├── 📁 common/             # Shared components
-│   │   │   │   ├── 📄 Button.jsx      # Custom button component
-│   │   │   │   ├── 📄 Input.jsx       # Form input component
-│   │   │   │   ├── 📄 Modal.jsx       # Modal dialog component
-│   │   │   │   └── 📄 Loading.jsx     # Loading spinner
-│   │   │   ├── 📁 layout/             # Layout components
-│   │   │   │   ├── 📄 Header.jsx      # Application header
-│   │   │   │   ├── 📄 Sidebar.jsx     # Navigation sidebar
-│   │   │   │   └── 📄 Footer.jsx      # Application footer
-│   │   │   ├── 📁 forms/              # Form components
-│   │   │   │   ├── 📄 LoginForm.jsx   # Authentication form
-│   │   │   │   ├── 📄 TaskForm.jsx    # Task creation/editing
-│   │   │   │   └── 📄 UserForm.jsx    # User management
-│   │   │   └── 📁 kanban/             # Kanban board components
-│   │   │       ├── 📄 KanbanBoard.jsx # Main board component
-│   │   │       ├── 📄 KanbanColumn.jsx# Individual columns
-│   │   │       └── 📄 KanbanCard.jsx  # Task cards
-│   │   ├── 📁 pages/                  # Page components
-│   │   │   ├── 📄 Dashboard.jsx       # Main dashboard
-│   │   │   ├── 📄 Login.jsx           # Login page
-│   │   │   ├── 📄 Tasks.jsx           # Task management
-│   │   │   ├── 📄 Projects.jsx        # Project overview
-│   │   │   └── 📄 Users.jsx           # User management
-│   │   ├── 📁 stores/                 # Zustand state management
-│   │   │   ├── 📄 authStore.js        # Authentication state
-│   │   │   ├── 📄 taskStore.js        # Task management state
-│   │   │   ├── 📄 userStore.js        # User management state
-│   │   │   └── 📄 uiStore.js          # UI state management
-│   │   ├── 📁 services/               # API service layer
-│   │   │   ├── 📄 api.js              # Base API configuration
-│   │   │   ├── 📄 authService.js      # Authentication API calls
-│   │   │   ├── 📄 taskService.js      # Task API calls
-│   │   │   └── 📄 userService.js      # User API calls
-│   │   ├── 📁 utils/                  # Utility functions
-│   │   │   ├── 📄 constants.js        # Application constants
-│   │   │   ├── 📄 helpers.js          # Helper functions
-│   │   │   └── 📄 validation.js       # Form validation
-│   │   ├── 📁 types/                  # JavaScript type definitions
-│   │   │   ├── 📄 auth.types.js       # Authentication types
-│   │   │   ├── 📄 task.types.js       # Task-related types
-│   │   │   └── 📄 user.types.js       # User-related types
-│   │   ├── 📄 App.jsx                 # Main application component
-│   │   ├── 📄 main.jsx                # Application entry point
-│   │   └── 📄 index.css               # Global styles
-│   ├── 📄 package.json                # Frontend dependencies
-│   ├── 📄 vite.config.js              # Vite configuration
-│   ├── 📄 jsconfig.json               # JavaScript configuration
-│   ├── 📄 tailwind.config.js          # TailwindCSS configuration
-│   └── 📄 postcss.config.js           # PostCSS configuration
-├── 📁 server/                          # Backend Node.js Application
-│   ├── 📁 config/                      # Configuration files
-│   │   ├── 📄 database.js              # Database configuration
-│   │   ├── 📄 cors.js                  # CORS configuration
-│   │   └── 📄 helmet.js                # Security headers
-│   ├── 📁 controllers/                 # Route controllers
-│   │   ├── 📄 authController.js        # Authentication logic
-│   │   ├── 📄 taskController.js        # Task management logic
-│   │   ├── 📄 userController.js        # User management logic
-│   │   └── 📄 fileController.js        # File upload logic
-│   ├── 📁 middleware/                  # Express middleware
-│   │   ├── 📄 auth.js                  # JWT authentication
-│   │   ├── 📄 validation.js            # Input validation
-│   │   ├── 📄 rateLimit.js             # Rate limiting
-│   │   ├── 📄 csrf.js                  # CSRF protection
-│   │   └── 📄 errorHandler.js          # Error handling
-│   ├── 📁 models/                      # Prisma schema and models
-│   │   ├── 📄 schema.prisma            # Database schema
-│   │   └── 📄 index.js                 # Prisma client export
-│   ├── 📁 routes/                      # API route definitions
-│   │   ├── 📄 auth.js                  # Authentication routes
-│   │   ├── 📄 tasks.js                 # Task management routes
-│   │   ├── 📄 users.js                 # User management routes
-│   │   └── 📄 files.js                 # File upload routes
-│   ├── 📁 services/                    # Business logic services
-│   │   ├── 📄 emailService.js          # Email functionality
-│   │   ├── 📄 fileService.js           # File handling logic
-│   │   └── 📄 notificationService.js   # Notification system
-│   ├── 📁 utils/                       # Utility functions
-│   │   ├── 📄 logger.js                # Logging utility
-│   │   ├── 📄 encryption.js            # Encryption helpers
-│   │   └── 📄 validators.js            # Validation schemas
-│   ├── 📄 server.js                    # Main server file
-│   ├── 📄 package.json                 # Backend dependencies
-│   ├── 📄 jsconfig.json                # JavaScript configuration
-│   └── 📄 nodemon.json                 # Development configuration
-├── 📁 shared/                          # Shared code between client/server
-│   ├── 📁 types/                       # Common JavaScript types
-│   │   ├── 📄 api.types.js             # API response types
-│   │   └── 📄 common.types.js          # Shared types
-│   └── 📁 constants/                   # Shared constants
-│       └── 📄 app.constants.js         # Application constants
-├── 📁 docs/                            # Documentation
-│   ├── 📄 api.md                       # API documentation
-│   ├── 📄 deployment.md                # Deployment guide
-│   └── 📄 development.md               # Development guide
-├── 📁 scripts/                         # Build and deployment scripts
-│   ├── 📄 build.sh                     # Build script
-│   ├── 📄 deploy.sh                    # Deployment script
-│   └── 📄 setup.sh                     # Environment setup
-├── 📄 .env.example                     # Environment variables template
-├── 📄 .env                             # Environment variables (gitignored)
-├── 📄 docker-compose.yml               # Docker development environment
-├── 📄 Dockerfile                       # Production Docker image
-├── 📄 package.json                     # Root package.json for scripts
-├── 📄 README.md                        # Project documentation
-└── 📄 .eslintrc.js                     # ESLint configuration
+├── 📁 client/                          # Aplicația Frontend (React)
+│   ├── 📁 public/                      # Resurse statice
+│   │   ├── 📄 index.html               # Șablonul HTML principal
+│   │   ├── 📄 favicon.ico              # Iconița aplicației
+│   │   └── 📄 manifest.json            # Manifest PWA
+│   ├── 📁 src/                         # Cod sursă
+│   │   ├── 📁 components/              # Componente UI reutilizabile
+│   │   │   ├── 📁 common/              # Componente comune
+│   │   │   │   ├── 📄 Button.jsx       # Componentă pentru buton personalizat
+│   │   │   │   ├── 📄 Input.jsx        # Componentă pentru câmp de formular
+│   │   │   │   ├── 📄 Modal.jsx        # Componentă pentru dialog modal
+│   │   │   │   └── 📄 Loading.jsx      # Indicator de încărcare (spinner)
+│   │   │   ├── 📁 layout/              # Componente de layout (aranjare în pagină)
+│   │   │   │   ├── 📄 Header.jsx       # Antetul aplicației
+│   │   │   │   ├── 📄 Sidebar.jsx      # Bară laterală de navigație
+│   │   │   │   └── 📄 Footer.jsx       # Subsolul aplicației
+│   │   │   ├── 📁 forms/               # Componente pentru formulare
+│   │   │   │   ├── 📄 LoginForm.jsx    # Formular de autentificare
+│   │   │   │   ├── 📄 TaskForm.jsx     # Creare/editare sarcini
+│   │   │   │   └── 📄 UserForm.jsx     # Administrare utilizatori
+│   │   │   └── 📁 kanban/              # Componente pentru panoul Kanban
+│   │   │       ├── 📄 KanbanBoard.jsx  # Componenta principală a panoului
+│   │   │       ├── 📄 KanbanColumn.jsx # Coloane individuale
+│   │   │       └── 📄 KanbanCard.jsx   # Carduri pentru sarcini
+│   │   ├── 📁 pages/                   # Componente pentru pagini
+│   │   │   ├── 📄 Dashboard.jsx        # Panou de control principal (Dashboard)
+│   │   │   ├── 📄 Login.jsx            # Pagină de autentificare
+│   │   │   ├── 📄 Tasks.jsx            # Administrare sarcini
+│   │   │   ├── 📄 Projects.jsx         # Prezentare generală proiecte
+│   │   │   └── 📄 Users.jsx            # Administrare utilizatori
+│   │   ├── 📁 stores/                  # Managementul stării cu Zustand
+│   │   │   ├── 📄 authStore.js         # Starea autentificării
+│   │   │   ├── 📄 taskStore.js         # Starea administrării sarcinilor
+│   │   │   ├── 📄 userStore.js         # Starea administrării utilizatorilor
+│   │   │   └── 📄 uiStore.js           # Managementul stării interfeței (UI)
+│   │   ├── 📁 services/                # Stratul de servicii API
+│   │   │   ├── 📄 api.js               # Configurare de bază API
+│   │   │   ├── 📄 authService.js       # Apeluri API pentru autentificare
+│   │   │   ├── 📄 taskService.js       # Apeluri API pentru sarcini
+│   │   │   └── 📄 userService.js       # Apeluri API pentru utilizatori
+│   │   ├── 📁 utils/                   # Funcții utilitare
+│   │   │   ├── 📄 constants.js         # Constantele aplicației
+│   │   │   ├── 📄 helpers.js           # Funcții ajutătoare
+│   │   │   └── 📄 validation.js        # Validare formulare
+│   │   ├── 📁 types/                   # Definiții de tipuri JavaScript
+│   │   │   ├── 📄 auth.types.js        # Tipuri pentru autentificare
+│   │   │   ├── 📄 task.types.js        # Tipuri legate de sarcini
+│   │   │   └── 📄 user.types.js        # Tipuri legate de utilizatori
+│   │   ├── 📄 App.jsx                  # Componenta principală a aplicației
+│   │   ├── 📄 main.jsx                 # Punctul de intrare al aplicației
+│   │   └── 📄 index.css                # Stiluri globale
+│   ├── 📄 package.json                 # Dependințe frontend
+│   ├── 📄 vite.config.js               # Configurare Vite
+│   ├── 📄 jsconfig.json                # Configurare JavaScript
+│   ├── 📄 tailwind.config.js           # Configurare TailwindCSS
+│   └── 📄 postcss.config.js            # Configurare PostCSS
+├── 📁 server/                           # Aplicația Backend (Node.js)
+│   ├── 📁 config/                       # Fișiere de configurare
+│   │   ├── 📄 database.js               # Configurare bază de date
+│   │   ├── 📄 cors.js                   # Configurare CORS
+│   │   └── 📄 helmet.js                 # Antete de securitate
+│   ├── 📁 controllers/                  # Controllere pentru rute
+│   │   ├── 📄 authController.js         # Logică de autentificare
+│   │   ├── 📄 taskController.js         # Logică pentru administrarea sarcinilor
+│   │   ├── 📄 userController.js         # Logică pentru administrarea utilizatorilor
+│   │   └── 📄 fileController.js         # Logică pentru încărcarea fișierelor
+│   ├── 📁 middleware/                   # Middleware pentru Express
+│   │   ├── 📄 auth.js                   # Autentificare JWT
+│   │   ├── 📄 validation.js             # Validare date de intrare
+│   │   ├── 📄 rateLimit.js              # Limitare de cereri (Rate limiting)
+│   │   ├── 📄 csrf.js                   # Protecție CSRF
+│   │   └── 📄 errorHandler.js           # Gestionarea erorilor
+│   ├── 📁 models/                       # Schema și modelele Prisma
+│   │   ├── 📄 schema.prisma             # Schema bazei de date
+│   │   └── 📄 index.js                  # Export client Prisma
+│   ├── 📁 routes/                       # Definiții pentru rutele API
+│   │   ├── 📄 auth.js                   # Rute de autentificare
+│   │   ├── 📄 tasks.js                  # Rute pentru administrarea sarcinilor
+│   │   ├── 📄 users.js                  # Rute pentru administrarea utilizatorilor
+│   │   └── 📄 files.js                  # Rute pentru încărcarea fișierelor
+│   ├── 📁 services/                     # Servicii pentru logica de business
+│   │   ├── 📄 emailService.js           # Funcționalitate email
+│   │   ├── 📄 fileService.js            # Logică pentru manipularea fișierelor
+│   │   └── 📄 notificationService.js    # Sistem de notificări
+│   ├── 📁 utils/                        # Funcții utilitare
+│   │   ├── 📄 logger.js                 # Utilitar pentru logare (jurnalizare)
+│   │   ├── 📄 encryption.js             # Funcții ajutătoare pentru criptare
+│   │   └── 📄 validators.js             # Scheme de validare
+│   ├── 📄 server.js                     # Fișierul principal al serverului
+│   ├── 📄 package.json                  # Dependințe backend
+│   ├── 📄 jsconfig.json                 # Configurare JavaScript
+│   └── 📄 nodemon.json                  # Configurare pentru dezvoltare
+├── 📁 shared/                           # Cod partajat între client și server
+│   ├── 📁 types/                        # Tipuri JavaScript comune
+│   │   ├── 📄 api.types.js              # Tipuri pentru răspunsuri API
+│   │   └── 📄 common.types.js           # Tipuri partajate
+│   └── 📁 constants/                    # Constante partajate
+│       └── 📄 app.constants.js          # Constantele aplicației
+├── 📁 docs/                             # Documentație
+│   ├── 📄 api.md                        # Documentație API
+│   ├── 📄 deployment.md                 # Ghid de implementare (Deployment)
+│   └── 📄 development.md                # Ghid de dezvoltare
+├── 📁 scripts/                          # Scripturi de build și deployment
+│   ├── 📄 build.sh                      # Script de build
+│   ├── 📄 deploy.sh                     # Script de deployment
+│   └── 📄 setup.sh                      # Configurare mediu
+├── 📄 .env.example                      # Șablon pentru variabile de mediu
+├── 📄 .env                              # Variabile de mediu (ignorat de Git)
+├── 📄 docker-compose.yml                # Mediu de dezvoltare cu Docker
+├── 📄 Dockerfile                        # Imagine Docker pentru producție
+├── 📄 package.json                      # package.json rădăcină pentru scripturi
+├── 📄 README.md                         # Documentația proiectului
+└── 📄 .eslintrc.js                      # Configurare ESLint
 ```
-
-## Environment Configuration
-
-
-### Client package.json
-
+``` 
+ 
+## Configurarea Mediului
+ 
+ 
+### Client package.json 
+ 
 ```json
 {
-  "name": "task-manager-client",
-  "version": "1.0.0",
+  "name": "task-manager-client", 
+  "version": "1.0.0", 
   "private": true,
   "scripts": {
     "dev": "vite",
@@ -679,7 +672,7 @@ task-manager-app/
 }
 ```
 
-## Development Setup Instructions
+### Instrucțiuni pentru Configurarea Mediului de Dezvoltare
 
 ```bash
 # Start PostgreSQL Docker
@@ -693,130 +686,129 @@ docker run --name postgres-task-manager \
 
 
 
-# Chapter 3: Backend Development
-
-## Express Server Architecture
 
 
 
- 
 
-## Express Server
-- HTTP request handling
-- Middleware pipeline
-- Route management
-- Error handling
+ # Capitolul 3: Dezvoltare Backend
 
-## Middleware Stack
-- **Helmet**: Security headers
-- **CORS**: Cross-origin resource sharing
-- **Auth**: JWT-based authentication
-- **Rate Limiting**: Prevent abuse and throttling
+## Arhitectura Serverului Express
 
-## Route Handlers
-- `/api/auth` : Authentication endpoints
-- `/api/tasks` : Task CRUD operations
-- `/api/users` : User management
-- `/api/files` : File upload/download
+## Server Express
+- Gestionarea cererilor HTTP  
+- Pipeline de middleware  
+- Gestionarea rutelor  
+- Gestionarea erorilor  
 
-## Service Layer
-- Business logic implementation
-- Data validation and sanitization
-- External API integration
-- File processing and storage
+## Stack Middleware
+- **Helmet**: Headere de securitate  
+- **CORS**: Partajare resurse între origini diferite  
+- **Auth**: Autentificare bazată pe JWT  
+- **Limitare Rată**: Prevenirea abuzurilor și throttling  
+
+## Handlere Rute
+- `/api/auth` : Endpoint-uri de autentificare  
+- `/api/tasks` : Operațiuni CRUD pentru sarcini  
+- `/api/users` : Gestionare utilizatori  
+- `/api/files` : Încărcare/descărcare fișiere  
+
+## Strat Servicii
+- Implementarea logicii de business  
+- Validarea și sanitizarea datelor  
+- Integrare API-uri externe  
+- Procesarea și stocarea fișierelor  
 
 ## Prisma ORM
-- Database connection management
-- Query building and optimization
-- Transaction handling
-- Migration management
+- Gestionarea conexiunilor la baza de date  
+- Construirea și optimizarea interogărilor  
+- Gestionarea tranzacțiilor  
+- Managementul migrărilor  
 
-## PostgreSQL Database
-- ACID compliance
-- Connection pooling
-- Index optimization
-- Backup and recovery
+## Baza de Date PostgreSQL
+- Conformitate ACID  
+- Pooling de conexiuni  
+- Optimizarea indexurilor  
+- Backup și recuperare  
 
+### Arhitectura Bazei de Date & Fluxul Interogărilor
 
-### Database Architecture & Query Flow
 
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                           DATABASE ARCHITECTURE                             │
+│                         ARHITECTURA BAZEI DE DATE                           │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
 │  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐   │
-│  │   CLIENT    │───►│   API       │───►│   SERVICE   │───►│   PRISMA    │   │
-│  │   REQUEST   │    │   VALIDATION│    │   LAYER     │    │   ORM       │   │
+│  │   CLIENT    │───►│  VALIDARE   │───►│    STRAT    │───►│   PRISMA    │   │
+│  │   CERERE    │    │     API     │    │   SERVICII  │    │     ORM     │   │
 │  └─────────────┘    └─────────────┘    └─────────────┘    └─────────────┘   │
 │           │                   │                   │                   │     │
 │           ▼                   ▼                   ▼                   ▼     │
 │  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐   │
-│  │   CACHE     │    │   QUERY     │    │   INDEX     │    │   DATABASE  │   │
-│  │   LAYER     │    │   BUILDER   │    │   OPTIMIZER │    │   EXECUTION │   │
+│  │    STRAT    │    │ CONSTRUCTOR │    │ OPTIMIZATOR │    │   EXECUȚIE  │   │
+│  │    CACHE    │    │  INTEROGĂRI │    │     INDEX   │    │  BAZĂ DATE  │   │
 │  │             │    │             │    │             │    │             │   │
-│  │ • Redis     │    │ • Dynamic   │    │ • Composite │    │ • Connection│   │
-│  │ • Memory    │    │ • Filters   │    │ • Partial   │    │   Pooling   │   │
-│  │ • CDN       │    │ • Sorting   │    │ • Full-text │    │ • Prepared  │   │
+│  │ • Redis     │    │ • Dinamice  │    │ • Compuse   │    │ • Pooling   │   │
+│  │ • Memorie   │    │ • Filtre    │    │ • Parțiale  │    │ • Pregătite │   │
+│  │ • CDN       │    │ • Sortare   │    │ • Full-text │    │             │   │
 │  └─────────────┘    └─────────────┘    └─────────────┘    └─────────────┘   │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
 
-### API Endpoint Architecture Foundation
+### Fundamentul Arhitecturii Endpoint-urilor API 
 
-REST API with HTTP methods:
-
+REST API cu metode HTTP:
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
-│                           API ENDPOINT ARCHITECTURE                 │
+│                     ARHITECTURA ENDPOINT-URILOR API                 │
 ├─────────────────────────────────────────────────────────────────────┤
 │                                                                     │
 │  ┌────────────────────────────────────────────────────────────────┐ │
-│  │                           AUTHENTICATION ENDPOINTS             │ │
-│  │  POST   /api/auth/login      - User login                      │ │
-│  │  POST   /api/auth/register   - User registration               │ │
-│  │  POST   /api/auth/logout     - User logout                     │ │
-│  │  POST   /api/auth/refresh    - Token refresh                   │ │
-│  │  POST   /api/auth/verify     - Token verification              │ │
+│  │                     ENDPOINT-URI DE AUTENTIFICARE                │ │
+│  │  POST   /api/auth/login      - Autentificare utilizator        │ │
+│  │  POST   /api/auth/register   - Înregistrare utilizator         │ │
+│  │  POST   /api/auth/logout     - Deconectare utilizator          │ │
+│  │  POST   /api/auth/refresh    - Reîmprospătare token            │ │
+│  │  POST   /api/auth/verify     - Verificare token                │ │
 │  └────────────────────────────────────────────────────────────────┘ │
 │                                    │                                │
 │                                    ▼                                │
 │  ┌────────────────────────────────────────────────────────────────┐ │
-│  │                             TASK ENDPOINTS                     │ │
-│  │  GET    /api/tasks           - List all tasks                  │ │
-│  │  POST   /api/tasks           - Create new task                 │ │
-│  │  GET    /api/tasks/:id       - Get task by ID                  │ │
-│  │  PUT    /api/tasks/:id       - Update task                     │ │
-│  │  DELETE /api/tasks/:id       - Delete task                     │ │
-│  │  PATCH  /api/tasks/:id/status- Update task status              │ │
+│  │                     ENDPOINT-URI PENTRU SARCINI                │ │
+│  │  GET    /api/tasks           - Listează toate sarcinile        │ │
+│  │  POST   /api/tasks           - Creează o sarcină nouă          │ │
+│  │  GET    /api/tasks/:id       - Obține sarcina după ID          │ │
+│  │  PUT    /api/tasks/:id       - Actualizează sarcina            │ │
+│  │  DELETE /api/tasks/:id       - Șterge sarcina                  │ │
+│  │  PATCH  /api/tasks/:id/status- Actualizează starea sarcinii    │ │
 │  └────────────────────────────────────────────────────────────────┘ │
 │                                    │                                │
 │                                    ▼                                │
 │  ┌────────────────────────────────────────────────────────────────┐ │
-│  │                             USER ENDPOINTS                     │ │
-│  │  GET    /api/users           - List all users                  │ │
-│  │  POST   /api/users           - Create new user                 │ │
-│  │  GET    /api/users/:id       - Get user by ID                  │ │
-│  │  PUT    /api/users/:id       - Update user                     │ │
-│  │  DELETE /api/users/:id       - Delete user                     │ │
-│  │  PATCH  /api/users/:id/role  - Update user role                │ │
+│  │                   ENDPOINT-URI PENTRU UTILIZATORI              │ │
+│  │  GET    /api/users           - Listează toți utilizatorii      │ │
+│  │  POST   /api/users           - Creează un utilizator nou       │ │
+│  │  GET    /api/users/:id       - Obține utilizatorul după ID     │ │
+│  │  PUT    /api/users/:id       - Actualizează utilizatorul       │ │
+│  │  DELETE /api/users/:id       - Șterge utilizatorul             │ │
+│  │  PATCH  /api/users/:id/role  - Actualizează rolul de utilizator│ │
 │  └────────────────────────────────────────────────────────────────┘ │
 │                                    │                                │
 │                                    ▼                                │
 │  ┌────────────────────────────────────────────────────────────────┐ │
-│  │                             FILE ENDPOINTS                     │ │
-│  │  POST   /api/files/upload    - Upload file                     │ │
-│  │  GET    /api/files/:id       - Download file                   │ │
-│  │  DELETE /api/files/:id       - Delete file                     │ │
-│  │  GET    /api/files/task/:id  - List files for task             │ │
+│  │                     ENDPOINT-URI PENTRU FIȘIERE                │ │
+│  │  POST   /api/files/upload    - Încarcă fișier                  │ │
+│  │  GET    /api/files/:id       - Descarcă fișier                 │ │
+│  │  DELETE /api/files/:id       - Șterge fișier                   │ │
+│  │  GET    /api/files/task/:id  - Listează fișierele unei sarcini │ │
 │  └────────────────────────────────────────────────────────────────┘ │
 │                                                                     │
 └─────────────────────────────────────────────────────────────────────┘
 ```
 
-### Server Implementation
+### Implementarea Serverului (ex)
 
 ```javascript
 // server/server.js
@@ -859,25 +851,25 @@ const authenticateToken = async (req, res, next) => {
     const token = authHeader && authHeader.split(' ')[1];
 
     if (!token) {
-      return res.status(401).json({ message: 'Access token required' });
+      return res.status(401).json({ message: 'Token de acces necesar' });
     }
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     req.user = decoded;
     next();
   } catch (error) {
-    return res.status(403).json({ message: 'Invalid or expired token' });
+    return res.status(403).json({ message: 'Token invalid sau expirat' });
   }
 };
 
 const requireRole = (roles) => {
   return (req, res, next) => {
     if (!req.user) {
-      return res.status(401).json({ message: 'Authentication required' });
+      return res.status(401).json({ message: 'Autentificare necesară' });
     }
 
     if (!roles.includes(req.user.role)) {
-      return res.status(403).json({ message: 'Insufficient permissions' });
+      return res.status(403).json({ message: 'Permisiuni insuficiente' });
     }
 
     next();
@@ -885,105 +877,106 @@ const requireRole = (roles) => {
 };
 ```
 
-## Users Table
-- **id (UUID)**: Primary key, unique identifier for each user
-- **email (VARCHAR)**: Unique user email
-- **password (HASHED)**: Securely stored user password
-- **role (ENUM)**: User role (`ADMIN`, `USER`)
-- **firstName (VARCHAR)**: User first name
-- **lastName (VARCHAR)**: User last name
-- **createdAt (TIMESTAMP)**: Record creation timestamp
-- **updatedAt (TIMESTAMP)**: Record update timestamp
-- **Relationships**:
-  - 1:N → Tasks
-  - 1:N → Projects
+## Tabelul Utilizatori
+- **id (UUID)**: Cheie primară, identificator unic pentru fiecare utilizator  
+- **email (VARCHAR)**: Email unic al utilizatorului  
+- **password (HASHED)**: Parolă stocată securizat  
+- **role (ENUM)**: Rolul utilizatorului (`ADMIN`, `USER`)  
+- **firstName (VARCHAR)**: Prenumele utilizatorului  
+- **lastName (VARCHAR)**: Numele de familie al utilizatorului  
+- **createdAt (TIMESTAMP)**: Timestamp la crearea înregistrării  
+- **updatedAt (TIMESTAMP)**: Timestamp la actualizarea înregistrării  
+- **Relații**:  
+  - 1:N → Sarcini (Tasks)  
+  - 1:N → Proiecte (Projects)  
 
-## Tasks Table
-- **id (UUID)**: Primary key
-- **title (VARCHAR)**: Task title
-- **description (TEXT)**: Task details
-- **status (ENUM)**: Task status (`TODO`, `IN_PROGRESS`, `DONE`)
-- **priority (ENUM)**: Task priority (`LOW`, `MEDIUM`, `HIGH`, `URGENT`)
-- **dueDate (TIMESTAMP)**: Optional due date
-- **userId (UUID)**: Assignee (foreign key to Users)
-- **projectId (UUID)**: Associated project (foreign key to Projects)
-- **Relationships**:
-  - 1:N → Attachments
+## Tabelul Sarcini (Tasks)
+- **id (UUID)**: Cheie primară  
+- **title (VARCHAR)**: Titlul sarcinii  
+- **description (TEXT)**: Detalii despre sarcină  
+- **status (ENUM)**: Starea sarcinii (`TODO`, `IN_PROGRESS`, `DONE`)  
+- **priority (ENUM)**: Prioritatea sarcinii (`LOW`, `MEDIUM`, `HIGH`, `URGENT`)  
+- **dueDate (TIMESTAMP)**: Dată limită opțională  
+- **userId (UUID)**: Persoana responsabilă (cheie străină către Utilizatori)  
+- **projectId (UUID)**: Proiect asociat (cheie străină către Proiecte)  
+- **Relații**:  
+  - 1:N → Atașamente (Attachments)
 
-## Attachments Table
-- **id (UUID)**: Primary key
-- **filename (VARCHAR)**: Stored filename
-- **filePath (VARCHAR)**: Path or URL to the file
-- **fileSize (BIGINT)**: File size in bytes
-- **mimeType (VARCHAR)**: File type
-- **taskId (UUID)**: Associated task (foreign key to Tasks)
-- **uploadedBy (UUID)**: Uploader user ID
-- **createdAt (TIMESTAMP)**: Upload timestamp
+## Tabelul Atașamente (Attachments)
+- **id (UUID)**: Cheie primară  
+- **filename (VARCHAR)**: Numele fișierului stocat  
+- **filePath (VARCHAR)**: Calea sau URL-ul fișierului  
+- **fileSize (BIGINT)**: Dimensiunea fișierului în bytes  
+- **mimeType (VARCHAR)**: Tipul fișierului  
+- **taskId (UUID)**: Sarcina asociată (cheie străină către Sarcini)  
+- **uploadedBy (UUID)**: ID-ul utilizatorului care a încărcat fișierul  
+- **createdAt (TIMESTAMP)**: Timestamp la încărcare  
 
-## Projects Table
-- **id (UUID)**: Primary key
-- **name (VARCHAR)**: Project name
-- **description (TEXT)**: Optional project description
-- **status (ENUM)**: Project status (`ACTIVE`, `ARCHIVED`, `COMPLETED`)
-- **createdAt (TIMESTAMP)**: Creation timestamp
-- **updatedAt (TIMESTAMP)**: Update timestamp
-- **ownerId (UUID)**: Project owner (foreign key to Users)
-- **team (ARRAY)**: List of team member IDs (foreign keys to Users)
-- **Relationships**:
-  - 1:N → Tasks
+## Tabelul Proiecte (Projects)
+- **id (UUID)**: Cheie primară  
+- **name (VARCHAR)**: Numele proiectului  
+- **description (TEXT)**: Descriere opțională a proiectului  
+- **status (ENUM)**: Starea proiectului (`ACTIVE`, `ARCHIVED`, `COMPLETED`)  
+- **createdAt (TIMESTAMP)**: Timestamp la creare  
+- **updatedAt (TIMESTAMP)**: Timestamp la actualizare  
+- **ownerId (UUID)**: Proprietarul proiectului (cheie străină către Utilizatori)  
+- **team (ARRAY)**: Listă de ID-uri ale membrilor echipei (chei străine către Utilizatori)  
+- **Relații**:
+  - 1:N → Sarcini (Tasks)  
 
-## Database Indexing Strategy
+## Strategie de Indexare a Bazei de Date
 
-The indexing strategy ensures fast and efficient queries:
+Strategia de indexare asigură interogări rapide și eficiente:
+
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                           QUERY OPTIMIZATION STRATEGY                       │
+│                   STRATEGIE DE OPTIMIZARE A INTEROGĂRILOR                   │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
 │  ┌────────────────────────────────────────────────────────────────────────┐ │
-│  │                           PRIMARY INDEXES                              │ │
-│  │  • users.id (PRIMARY KEY)                                              │ │
-│  │  • tasks.id (PRIMARY KEY)                                              │ │
-│  │  • attachments.id (PRIMARY KEY)                                        │ │
-│  │  • projects.id (PRIMARY KEY)                                           │ │
+│  │                           INDEXURI PRIMARE                             │ │
+│  │  • users.id (CHEIE PRIMARĂ)                                            │ │
+│  │  • tasks.id (CHEIE PRIMARĂ)                                            │ │
+│  │  • attachments.id (CHEIE PRIMARĂ)                                      │ │
+│  │  • projects.id (CHEIE PRIMARĂ)                                         │ │
 │  └────────────────────────────────────────────────────────────────────────┘ │
 │                                    │                                        │
 │                                    ▼                                        │
 │  ┌───────────────────────────────────────────────────────────────────────┐  │
-│  │                         PERFORMANCE INDEXES                           │  │
+│  │                       INDEXURI DE PERFORMANȚĂ                         │  │
 │  │  ┌─────────────┐ ┌─────────────┐ ┌─────────────┐ ┌─────────────┐      │  │
+│  │  │  Securitate │ │   Antete    │ │   Antete    │ │   Opțiuni   │      │  │
 │  │  │   Helmet    │ │   HSTS      │ │   CSP       │ │   X-Frame   │      │  │
-│  │  │   Security  │ │   Headers   │ │   Headers   │ │   Options   │      │  │
 │  │  └─────────────┘ └─────────────┘ └─────────────┘ └─────────────┘      │  │
 │  │                                    │                                  │  │
 │  │                                    ▼                                  │  │
 │  │  ┌─────────────┐ ┌─────────────┐ ┌─────────────┐ ┌─────────────┐      │  │
-│  │  │   CORS      │ │   Rate      │ │   Auth      │ │   Validation│      │  │
-│  │  │   Policy    │ │   Limiting  │ │   JWT       │ │   Middleware│      │  │
+│  │  │  Politică   │ │   Limitare  │ │Autentificare│ │  Middleware │      │  │
+│  │  │   CORS      │ │   Cereri    │ │   JWT       │ │   Validare  │      │  │
 │  │  └─────────────┘ └─────────────┘ └─────────────┘ └─────────────┘      │  │
 │  └───────────────────────────────────────────────────────────────────────┘  │
 │                                    │                                        │
 │                                    ▼                                        │
 │  ┌───────────────────────────────────────────────────────────────────────┐  │
-│  │                           DATA VALIDATION                             │  │
+│  │                           VALIDAREA DATELOR                           │  │
 │  │  ┌─────────────┐ ┌─────────────┐ ┌─────────────┐ ┌─────────────┐      │  │
-│  │  │   INPUT     │ │   SANITIZE  │ │   VALIDATE  │ │   TRANSFORM │      │  │
-│  │  │   PARSING   │ │   HTML      │ │   SCHEMA    │ │   DATA      │      │  │
-│  │  │             │ │   ESCAPING  │ │   CHECKING  │ │   FORMAT    │      │  │
+│  │  │   PARSARE   │ │  IGIENIZARE │ │   VALIDARE  │ │ TRANSFORMARE│      │  │
+│  │  │   INPUT     │ │   HTML      │ │   SCHEMĂ    │ │   DATE      │      │  │
+│  │  │             │ │   ESCAPARE  │ │  VERIFICARE │ │   FORMAT    │      │  │
 │  │  └─────────────┘ └─────────────┘ └─────────────┘ └─────────────┘      │  │
 │  │                                    │                                  │  │
 │  │                                    ▼                                  │  │
 │  │  ┌─────────────┐ ┌─────────────┐ ┌─────────────┐ ┌─────────────┐      │  │
-│  │  │   REGEX     │ │   TYPE      │ │   XSS       │ │   DATABASE  │      │  │
-│  │  │   PATTERNS  │ │   CHECKING  │ │   PREVENTION│ │   SANITIZE  │      │  │
+│  │  │   MODELE    │ │  VERIFICARE │ │  PREVENIRE  │ │  IGIENIZARE │      │  │
+│  │  │   REGEX     │ │   TIP       │ │   XSS       │ │  BAZĂ DATE  │      │  │
 │  │  └─────────────┘ └─────────────┘ └─────────────┘ └─────────────┘      │  │
 │  └───────────────────────────────────────────────────────────────────────┘  │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
 
-### Prisma Client Configuration
+### Configurare Prisma Client
 
 ```javascript
 // server/models/index.js
@@ -996,7 +989,7 @@ const prisma = globalThis.__prisma || new PrismaClient({
 
 ```
 
-### Task Controller Implementation
+### Implementarea Controller-ului pentru Sarcini
 
 ```javascript
 // server/controllers/taskController.js
@@ -1008,7 +1001,7 @@ const createTask = async (req, res) => {
     const { title, description, priority, dueDate, projectId } = req.body;
     const userId = req.user.id;
 
-    // Validate input
+    // Valideaza input
     const validation = validateTaskInput(req.body);
     if (!validation.isValid) {
       return res.status(400).json({
@@ -1018,7 +1011,7 @@ const createTask = async (req, res) => {
       });
     }
 
-    // Create task
+    // Creaza task
     const task = await prisma.task.create({
       data: {
         title,
@@ -1062,99 +1055,94 @@ const createTask = async (req, res) => {
 
 ```
 
-### Route Implementation
+### Implementarea Rutei
 
 ```javascript
 // server/routes/tasks.js
-
 const router = Router();
-
-// Apply authentication to all task routes
+// Aplică autentificarea pentru toate rutele sarcinilor
 router.use(authenticateToken);
-
-// Task CRUD operations
+// CRUD pentru sarcini
 router.post('/', validateTaskInput, taskController.createTask);
 router.get('/', taskController.getTasks);
 router.get('/:id', taskController.getTaskById);
 router.put('/:id', validateTaskInput, taskController.updateTask);
 router.delete('/:id', taskController.deleteTask);
 
-// Task status updates
+// Actualizări ale statusului sarcinilor
 router.patch('/:id/status', taskController.updateTaskStatus);
 
-// Export the router
+// Exportă router-ul
 ```
 
 
 
-# Chapter 4: Authentication & Security
+# Chapter 4: Capitolul 4: Autentificare & Securitate
 
 
-
-### Multi-Layer Security Implementation
+### Implementarea Securității pe mai multe straturi
 
 
 ```
 ┌───────────────────────────────────────────────────────────┐
-│                           SECURITY ARCHITECTURE           │
+│                       ARHITECTURA DE SECURITATE           │
 ├───────────────────────────────────────────────────────────┤
 │                                                           │
 │  ┌──────────────────────────────────────────────────────┐ │
-│  │                           CLIENT LAYER               │ │
-│  │  • Input validation and sanitization                 │ │
-│  │  • XSS prevention                                    │ │
-│  │  • CSRF token management                             │ │
-│  │  • Secure cookie handling                            │ │
+│  │                          STRATUL CLIENT              │ │
+│  │  • Validarea și igienizarea datelor de intrare       │ │
+│  │  • Prevenirea atacurilor XSS                         │ │
+│  │  • Managementul token-urilor CSRF                    │ │
+│  │  • Gestionarea securizată a cookie-urilor            │ │
 │  └──────────────────────────────────────────────────────┘ │
 │                                    │                      │
 │                                    ▼                      │
 │  ┌─────────────────────────────────────────────────────┐  │
-│  │                         TRANSPORT LAYER             │  │
-│  │  • HTTPS/TLS 1.3 encryption                         │  │
-│  │  • Certificate pinning                              │  │
-│  │  • Secure headers (HSTS, CSP)                       │  │
-│  │  • Rate limiting and DDoS protection                │  │
+│  │                      STRATUL DE TRANSPORT           │  │
+│  │  • Criptare HTTPS/TLS 1.3                           │  │
+│  │  • Fixarea certificatelor (Certificate pinning)     │  │
+│  │  • Antete securizate (HSTS, CSP)                    │  │
+│  │  • Limitarea cererilor și protecție DDoS            │  │
 │  └─────────────────────────────────────────────────────┘  │
 │                                    │                      │
 │                                    ▼                      │
 │  ┌─────────────────────────────────────────────────────┐  │
-│  │                        APPLICATION LAYER            │  │
-│  │  • JWT authentication                               │  │
-│  │  • Role-based access control (RBAC)                 │  │
-│  │  • Input validation and sanitization                │  │
-│  │  • SQL injection prevention                         │  │
+│  │                       STRATUL APLICAȚIEI            │  │
+│  │  • Autentificare JWT                                │  │
+│  │  • Controlul accesului bazat pe roluri (RBAC)       │  │
+│  │  • Validarea și igienizarea datelor de intrare      │  │
+│  │  • Prevenirea injecțiilor SQL                       │  │
 │  └─────────────────────────────────────────────────────┘  │
 │                                    │                      │
 │                                    ▼                      │
 │  ┌──────────────────────────────────────────────────────┐ │
-│  │                           DATA LAYER                 │ │
-│  │  • Database encryption at rest                       │ │
-│  │  • Secure connection strings                         │ │
-│  │  • Audit logging                                     │ │
-│  │  • Backup encryption                                 │ │
+│  │                         STRATUL DE DATE              │ │
+│  │  • Criptarea bazei de date în repaus                 │ │
+│  │  • Șiruri de conexiune securizate                    │ │
+│  │  • Jurnalizare pentru audit                          │ │
+│  │  • Criptarea copiilor de rezervă (backup)            │ │
 │  └──────────────────────────────────────────────────────┘ │
 │                                                           │
 └───────────────────────────────────────────────────────────┘
 ```
-
-### Authentication Service Implementation
+### Implementarea Serviciului de Autentificare
 
 ```javascript
 // server/services/authService.js
 class AuthService {
   static async register(userData) {
     const { email, password, firstName, lastName } = userData;
-    // Check if user already exists
+    // Verifică dacă utilizatorul există deja
     const existingUser = await prisma.user.findUnique({
       where: { email }
     });
     if (existingUser) {
-      throw new Error('User already exists');
+      throw new Error('Utilizatorul există deja');
     }
-    // Hash password
+    // Hash pentru parolă
     const saltRounds = 12;
     const hashedPassword = await bcrypt.hash(password, saltRounds);
-    // Create user
+    // Crează utilizatorul
     const user = await prisma.user.create({
       data: {
         email,
@@ -1172,7 +1160,7 @@ class AuthService {
         createdAt: true
       }
     });
-    // Generate tokens
+    // Generează token-urile
     const accessToken = jwt.sign(
       { userId: user.id, email: user.email, role: user.role },
       process.env.JWT_SECRET,
@@ -1187,19 +1175,19 @@ class AuthService {
   }
 
   static async login(email, password) {
-    // Find user
+    // Găsește utilizatorul
     const user = await prisma.user.findUnique({
       where: { email }
     });
     if (!user) {
-      throw new Error('Invalid credentials');
+      throw new Error('Credențiale invalide');
     }
-    // Verify password
+    // Verifică parola
     const isValidPassword = await bcrypt.compare(password, user.password);
     if (!isValidPassword) {
-      throw new Error('Invalid credentials');
+      throw new Error('Credențiale invalide');
     }
-    // Generate tokens
+    // Generează token-urile
     const accessToken = jwt.sign(
       { userId: user.id, email: user.email, role: user.role },
       process.env.JWT_SECRET,
@@ -1230,7 +1218,7 @@ class AuthService {
       }
     });
     if (!user) {
-      throw new Error('User not found');
+      throw new Error('Utilizatorul nu a fost găsit');
     }
     const newAccessToken = jwt.sign(
       { userId: user.id, email: user.email, role: user.role },
@@ -1244,7 +1232,7 @@ class AuthService {
 ```
 
 
-### CSRF Protection Middleware
+### Middleware pentru Protecția CSRF
 
 ```javascript
 // server/middleware/csrf.js
@@ -1252,9 +1240,9 @@ const crypto = require('crypto');
 
 const generateCSRFToken = (req, res, next) => {
   try {
-    // Generate CSRF token
+    // Generează token CSRF
     const csrfToken = crypto.randomBytes(32).toString('hex');
-    // Store token in session or memory
+    // Stochează token-ul în sesiune sau memorie
     req.session = req.session || {};
     req.session.csrfToken = csrfToken;
     res.locals.csrfToken = csrfToken;
@@ -1271,10 +1259,10 @@ const validateCSRFToken = (req, res, next) => {
     if (!csrfToken || !sessionToken || csrfToken !== sessionToken) {
       return res.status(403).json({
         success: false,
-        message: 'CSRF token validation failed'
+        message: 'Validarea token-ului CSRF a eșuat'
       });
     }
-    // Clear used token
+    // Șterge token-ul utilizat
     delete req.session.csrfToken;
     next();
   } catch (error) {
@@ -1285,26 +1273,22 @@ const validateCSRFToken = (req, res, next) => {
 
 
 
+# Capitolul 5: Arhitectura Frontend
 
-# Chapter 5: Frontend Architecture
-
-
-### Main Application Component
+### Componenta Principală a Aplicației
 
 ```javascript
 // client/src/App.jsx
-
-
 const App = () => {
   return (
     <AuthProvider>
       <Router>
         <div className="min-h-screen bg-gray-50">
           <Routes>
-            {/* Public routes */}
+            {/* Rute publice */}
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            {/* Protected routes */}
+            {/* Rute protejate */}
             <Route path="/" element={<ProtectedRoute><Layout /></ProtectedRoute>}>
               <Route index element={<Dashboard />} />
               <Route path="tasks" element={<Tasks />} />
@@ -1327,36 +1311,34 @@ const App = () => {
     </AuthProvider>
   );
 };
+
 ```
 
-## Design System & UI Architecture
+Sistemul de design utilizează TailwindCSS pentru interfețe consistente, responsive și estetice:
 
-Design system leverages TailwindCSS for consistent, responsive, and beautiful interfaces:
+### Arhitectura Componentelor
 
-### Component Architecture
+Frontend-ul urmează o arhitectură modulară de componente cu:
 
-The frontend follows a modular component architecture with:
+- **Principii Atomic Design**: Blocuri de construcție de la atomi la organisme  
+- **Componente Reutilizabile**: Elemente UI partajate în întreaga aplicație  
+- **Design Responsiv**: Abordare mobile-first cu breakpoints adaptive  
+- **Accesibilitate**: Conformitate WCAG 2.1 AA cu suport pentru cititoare de ecran  
+- **Sistem de Temă**: Mod light/dark cu suport pentru branding personalizat  
+- **Performanță**: Code splitting și lazy loading pentru performanță optimă  
 
-- **Atomic Design Principles**: Building blocks from atoms to organisms
-- **Reusable Components**: Shared UI elements across the application
-- **Responsive Design**: Mobile-first approach with adaptive breakpoints
-- **Accessibility**: WCAG 2.1 AA compliance with screen reader support
-- **Theme System**: Light/dark mode with custom branding support
-- **Performance**: Code splitting and lazy loading for optimal performance
+### Managementul Stării cu Zustand
 
-### State Management with Zustand
+Zustand oferă un management al stării ușor și scalabil:
 
-Zustand provides lightweight, scalable state management:
+- **API Simplu**: Boilerplate minim comparativ cu Redux  
+- **Siguranță Tipuri**: Suport complet JavaScript cu definiții de tip  
+- **Suport Middleware**: DevTools, persistență și middleware personalizat  
+- **Integrare React**: API bazat pe hooks pentru integrare seamless cu React  
 
-- **Simple API**: Minimal boilerplate compared to Redux
-- **Type Safety**: Full JavaScript support with type definitions
-- **Middleware Support**: DevTools, persistence, and custom middleware
-- **React Integration**: Hooks-based API for seamless React integration
 
 ```javascript
 // client/src/stores/taskStore.js
-
-
 const useTaskStore = create(
   devtools(
     persist(
@@ -1462,11 +1444,9 @@ const useTaskStore = create(
 );
 ```
 
-
-### Form Components
+### Componente Formular
 
 ```javascript
-
 const TaskForm = ({ task, onSubmit, onCancel, mode = 'create' }) => {
   const { createTask, updateTask, loading } = useTaskStore();
   const { projects } = useProjectStore();
@@ -1481,9 +1461,9 @@ const TaskForm = ({ task, onSubmit, onCancel, mode = 'create' }) => {
 
   const validationSchema = Yup.object({
     title: Yup.string()
-      .min(3, 'Title must be at least 3 characters')
-      .max(200, 'Title must not exceed 200 characters')
-      .required('Title is required'),
+      .min(3, 'Titlul trebuie să aibă cel puțin 3 caractere')
+      .max(200, 'Titlul nu trebuie să depășească 200 de caractere')
+      .required('Titlul este obligatoriu'),
   });
 
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
@@ -1497,7 +1477,7 @@ const TaskForm = ({ task, onSubmit, onCancel, mode = 'create' }) => {
       onSubmit?.(values);
       resetForm();
     } catch (error) {
-      console.error('Task submission error:', error);
+      console.error('Eroare la trimiterea sarcinii:', error);
     } finally {
       setSubmitting(false);
     }
@@ -1506,7 +1486,7 @@ const TaskForm = ({ task, onSubmit, onCancel, mode = 'create' }) => {
   return (
     <div className="bg-white rounded-lg shadow-sm border p-6">
       <h2 className="text-xl font-semibold text-gray-900 mb-6">
-        {mode === 'create' ? 'Create New Task' : 'Edit Task'}
+        {mode === 'create' ? 'Creează Sarcină Nouă' : 'Editează Sarcina'}
       </h2>
       <Formik
         initialValues={initialValues}
@@ -1517,14 +1497,14 @@ const TaskForm = ({ task, onSubmit, onCancel, mode = 'create' }) => {
           <Form className="space-y-6">
             <div>
               <label htmlFor="title" className="block text-sm font-medium text-gray-700 mb-2">
-                Title *
+                Titlu *
               </label>
               <Field
                 type="text"
                 id="title"
                 name="title"
                 className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                placeholder="Enter task title"
+                placeholder="Introduceți titlul sarcinii"
               />
               <ErrorMessage name="title" component="div" className="mt-1 text-sm text-red-600" />
             </div>
@@ -1535,14 +1515,14 @@ const TaskForm = ({ task, onSubmit, onCancel, mode = 'create' }) => {
                 onClick={onCancel}
                 disabled={isSubmitting}
               >
-                Cancel
+                Anulează
               </Button>
               <Button
                 type="submit"
                 disabled={isSubmitting || !isValid || !dirty}
                 loading={isSubmitting}
               >
-                {mode === 'create' ? 'Create Task' : 'Update Task'}
+                {mode === 'create' ? 'Creează Sarcină' : 'Actualizează Sarcina'}
               </Button>
             </div>
           </Form>
@@ -1551,9 +1531,9 @@ const TaskForm = ({ task, onSubmit, onCancel, mode = 'create' }) => {
     </div>
   );
 };
-```
 
-### Custom Hooks
+```
+### Hooks Personalizate
 
 ```javascript
 function useApi(options = {}) {
@@ -1594,16 +1574,16 @@ function useApi(options = {}) {
       if (!response.ok) {
         if (response.status === 401) {
           logout();
-          throw new Error('Authentication required');
+          throw new Error('Autentificare necesară');
         }
-        throw new Error(`HTTP error! status: ${response.status}`);
+        throw new Error(`Eroare HTTP! status: ${response.status}`);
       }
       const responseData = await response.json();
       setData(responseData);
       onSuccess?.(responseData);
       return responseData;
     } catch (err) {
-      const errorMessage = err.message || 'An error occurred';
+      const errorMessage = err.message || 'A apărut o eroare';
       setError(errorMessage);
       onError?.(err);
       throw err;
@@ -1627,10 +1607,11 @@ function useApi(options = {}) {
     setError
   };
 }
+
 ```
 
 
-### Kanban Board Components
+### Componentele Panoului Kanban
 
 ```javascript
 const KanbanCard = React.memo(({ task, index, onEdit, onDelete }) => {
@@ -1644,7 +1625,7 @@ const KanbanCard = React.memo(({ task, index, onEdit, onDelete }) => {
   }, [task, onEdit]);
 
   const handleDelete = useCallback(() => {
-    if (window.confirm('Are you sure you want to delete this task?')) {
+    if (window.confirm('Sigur doriți să ștergeți această sarcină?')) {
       onDelete?.(task.id);
     }
   }, [task.id, onDelete]);
@@ -1687,34 +1668,27 @@ const KanbanCard = React.memo(({ task, index, onEdit, onDelete }) => {
 KanbanCard.displayName = 'KanbanCard';
 ```
 
-## Performance Optimization
+## Optimizarea Performanței
 
-### Code Splitting and Lazy Loading
+### Împărțirea Codului și Încărcarea Întârziată
 
+- **Împărțirea codului pe rute**: Fiecare pagină este încărcată doar când este necesară  
+- **Încărcarea întârziată a componentelor**: Componentele mari sunt încărcate la cerere  
+- **Optimizarea pachetului**: Tree shaking și eliminarea codului neutilizat  
+- **Optimizarea imaginilor**: Format WebP cu fallback-uri și încărcare întârziată  
+- **Strategii de caching**: Service worker pentru suport offline  
 
-- **Route-based Code Splitting**: Each page is loaded only when needed
-- **Component Lazy Loading**: Heavy components are loaded on demand
-- **Bundle Optimization**: Tree shaking and dead code elimination
-- **Image Optimization**: WebP format with fallbacks and lazy loading
-- **Caching Strategies**: Service worker for offline support
+### Implementarea Designului Responsiv
 
-### Responsive Design Implementation
+- **Abordare Mobile-First**: Designul începe de la mobil și se scalează în sus  
+- **Sistem de grid flexibil**: CSS Grid și Flexbox pentru layout-uri adaptive  
+- **Gestionarea punctelor de întrerupere**: Puncte de întrerupere consistente între componente  
+- **Interfață prietenoasă pentru touch**: Optimizată pentru interacțiuni mobile  
+- **Monitorizarea performanței**: Metrici de performanță în timp real  
 
-- **Mobile-First Approach**: Design starts with mobile and scales up
-- **Flexible Grid System**: CSS Grid and Flexbox for adaptive layouts
-- **Breakpoint Management**: Consistent breakpoints across components
-- **Touch-Friendly Interface**: Optimized for mobile interactions
-- **Performance Monitoring**: Real-time performance metrics
+# Capitolul 6: Gestionarea Sarcinilor & Kanban
 
-
-
-# Chapter 6: Task Management & Kanban
-
-
-
-
-### Kanban Board Architecture Overview
-
+### Prezentare Generală a Arhitecturii Kanban
 
 
 ```
@@ -1743,7 +1717,7 @@ KanbanCard.displayName = 'KanbanCard';
 └──────────────────────────────────────────────────────────────────────┘
 ```
 
-### Task Status Flow & Workflow Management
+### Fluxul Statusului Sarcinilor & Managementul Fluxului de Lucru
 
 
 ```
@@ -1771,7 +1745,7 @@ KanbanCard.displayName = 'KanbanCard';
 └──────────────────────────────────────────────────────────────────────────────┘
 ```
 
-### Task Assignment & User Management
+### Alocarea Sarcinilor & Gestionarea Utilizatorilor
 
 
 ```
@@ -1801,7 +1775,7 @@ KanbanCard.displayName = 'KanbanCard';
 └────────────────────────────────────────────────────────────────────────┘
 ```
 
-### Priority Management & Sorting Algorithms
+### Managementul Priorităților & Algoritmi de Sortare
 
 
 ```
@@ -1834,16 +1808,16 @@ KanbanCard.displayName = 'KanbanCard';
 └──────────────────────────────────────────────────────────────────────────── ─┘
 ```
 
-**Priority Management Features:**
-- **Visual Indicators**: Color-coded priority levels for quick identification
-- **Smart Sorting**: Automatic sorting based on priority, due date, and creation time
-- **Workload Balancing**: Intelligent task distribution across team members
-- **Deadline Management**: Automatic notifications for approaching due dates
-- **Escalation Rules**: Automatic priority escalation for overdue tasks
-- **Capacity Planning**: Workload visualization and resource allocation
 
-### Real-time Collaboration & Updates
+**Funcționalități de Management al Priorităților:**
+- **Indicatori Vizuali**: Niveluri de prioritate codificate pe culori pentru identificare rapidă  
+- **Sortare Inteligentă**: Sortare automată bazată pe prioritate, termen-limită și timp de creare  
+- **Echilibrarea Sarcinilor**: Distribuție inteligentă a sarcinilor între membrii echipei  
+- **Gestionarea Termenelor**: Notificări automate pentru termenele apropiate  
+- **Reguli de Escaladare**: Creșterea automată a priorității pentru sarcinile întârziate  
+- **Planificarea Capacității**: Vizualizarea volumului de muncă și alocarea resurselor  
 
+### Colaborare & Actualizări în Timp Real
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
@@ -1864,14 +1838,13 @@ KanbanCard.displayName = 'KanbanCard';
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
 
-**Real-time Features:**
-- **Live Updates**: Instant synchronization across all team members
-- **Conflict Resolution**: Automatic conflict detection and resolution
-- **Offline Support**: Local caching with sync when online
-- **Activity Feed**: Real-time activity tracking and notifications
-- **Collaborative Editing**: Multiple users can work simultaneously
-- **Version History**: Complete audit trail of all changes
-
+**Funcționalități în Timp Real:**
+- **Actualizări Live**: Sincronizare instantanee între toți membrii echipei  
+- **Rezolvarea Conflictelor**: Detectare și rezolvare automată a conflictelor  
+- **Suport Offline**: Stocare locală cu sincronizare la reconectare  
+- **Feed de Activitate**: Monitorizarea activităților și notificări în timp real  
+- **Editare Colaborativă**: Mai mulți utilizatori pot lucra simultan  
+- **Istoric Versiuni**: Trail complet de audit pentru toate modificările  
 ```javascript
 const useKanbanStore = create(
   devtools(
@@ -1896,7 +1869,7 @@ const initialColumns = {
             columns[task.status].push(task);
           }
         });
-        // Sort tasks by priority and creation date
+        // Sortează sarcinile după prioritate și data creării
         Object.keys(columns).forEach((status) => {
           columns[status].sort((a, b) => {
             const priorityOrder = { URGENT: 4, HIGH: 3, MEDIUM: 2, LOW: 1 };
@@ -1912,18 +1885,18 @@ const initialColumns = {
 
       moveTask: async (taskId, fromStatus, toStatus) => {
         try {
-          // Update task status via API
+          // Actualizează statusul sarcinii prin API
           const updatedTask = await taskService.updateTaskStatus(taskId, toStatus);
-          // Update local state
+          // Actualizează starea locală
           set((state) => {
             const newColumns = { ...state.columns };
-            // Remove from source column
+            // Elimină din coloana sursă
             newColumns[fromStatus] = newColumns[fromStatus].filter(
               (task) => task.id !== taskId
             );
-            // Add to target column
+            // Adaugă în coloana țintă
             newColumns[toStatus] = [...newColumns[toStatus], updatedTask];
-            // Sort target column
+            // Sortează coloana țintă
             newColumns[toStatus].sort((a, b) => {
               const priorityOrder = { URGENT: 4, HIGH: 3, MEDIUM: 2, LOW: 1 };
               const priorityDiff = priorityOrder[b.priority] - priorityOrder[a.priority];
@@ -1936,7 +1909,7 @@ const initialColumns = {
           });
           return updatedTask;
         } catch (error) {
-          console.error('Failed to move task:', error);
+          console.error('Mutarea sarcinii a eșuat:', error);
           throw error;
         }
       },
@@ -1949,18 +1922,17 @@ const initialColumns = {
 ```
 
 
-# Chapter 7: File Handling & Storage
+# Capitolul 7: Gestionarea Fișierelor & Stocare
 
-## Overview
+## Prezentare Generală
 
-File handling and storage represent critical components of any production application. In Sync, i implement a solution that combines security, performance, and scalability through Google Cloud Storage integration. This chapter explores the technical implementation, security considerations, and real-world deployment strategies.
+Gestionarea și stocarea fișierelor reprezintă componente critice ale oricărei aplicații de producție. În Sync, am implementat o soluție care combină securitatea, performanța și scalabilitatea prin integrarea Google Cloud Storage. Acest capitol explorează implementarea tehnică, considerațiile de securitate și strategiile de implementare în mediul real.
 
-## File Management Architecture
+## Arhitectura Gestionării Fișierelor
 
-### System Overview
 
 ```
-File Upload Flow Architecture:
+Arhitectura Fluxului de Încărcare a Fișierelor:
 ┌─────────────────────────────────────────────────────────┐
 │                 CLIENT LAYER                            │
 │  ┌─────────────────┐ ┌─────────────────┐ ┌───────────┐  │
@@ -2019,34 +1991,32 @@ File Upload Flow Architecture:
 │  └─────────────────┘ └─────────────────┘ └───────────┘  │
 └─────────────────────────────────────────────────────────┘
 ```
+## Încărcarea Fișierelor Sigure
 
-## Secure File Uploads
+### Validarea Tipului de Fișier
 
-### File Type Validation
+**Problema: Falsificarea Extensiilor Fișierelor**
 
-**The Problem: File Extension Spoofing**
+Atacatorii pot încărca fișiere malițioase schimbând extensiile fișierelor. De exemplu, un fișier `.exe` redenumit `.jpg` poate ocoli validarea de bază.
 
-Attackers can upload malicious files by changing file extensions. For example, a `.exe` file renamed to `.jpg` could bypass basic validation.
-
-**Solution: Multi-Layer Validation**
+**Soluție: Validare în Mai Multe Straturi**
 
 ```javascript
-// 1. File Extension Validation
+// 1. Validarea Extensiei Fișierului
 const allowedExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.pdf', '.doc', '.docx'];
 const fileExtension = path.extname(file.originalname).toLowerCase();
 
-// 2. MIME Type Validation
+// 2. Validarea Tipului MIME
 const allowedMimeTypes = [
     'image/jpeg',
-    'image/png', 
+    'image/png',
     'image/gif',
     'application/pdf',
     'application/msword',
     'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
 ];
 
-// 3. Magic Number Validation (File Signature)
-
+// 3. Validarea Semnăturii Fișierului (Magic Number)
 const fileSignature = fileBuffer.toString('hex', 0, 4);
 
 const magicNumbers = {
@@ -2058,40 +2028,34 @@ const magicNumbers = {
 
 const detectedType = magicNumbers[fileSignature];
 if (!detectedType || detectedType !== file.mimetype) {
-    throw new Error('File signature mismatch');
+    throw new Error('Incompatibilitate semnătură fișier');
 }
 ```
+**De ce Contează Magic Numbers**
 
-**Why Magic Numbers Matter**
+Magic numbers (semnăturile fișierelor) sunt primii câțiva bytes ai unui fișier care îi identifică tipul. Aceasta previne ca atacatorii să:
 
-Magic numbers (file signatures) are the first few bytes of a file that identify its type. This prevents attackers from:
+- Încarce fișiere executabile cu extensii de imagine  
+- Ocolească validarea tipului MIME  
+- Exploateze vulnerabilitățile browserului cu fișiere malițioase  
 
-- Uploading executable files with image extensions
-- Bypassing MIME type validation
-- Exploiting browser vulnerabilities with malicious files
-
-### File Size Validation
-
-**Progressive Size Limits**
+**Limite Progressive de Dimensiune**
 
 ```javascript
 const sizeLimits = {
-    images: 5 * 1024 * 1024,    // 5MB for images
-    documents: 10 * 1024 * 1024, // 10MB for documents
-    total: 50 * 1024 * 1024      // 50MB total per user
+    images: 5 * 1024 * 1024,     // 5MB pentru imagini
+    documents: 10 * 1024 * 1024, // 10MB pentru documente
+    total: 50 * 1024 * 1024      // 50MB total per utilizator
 };
 ```
 
-**Storage Quota Management**
+**Gestionarea Cotelor de Stocare**  
+- **Limite per Utilizator**: Previne abuzul de stocare  
+- **Limite pe Tip de Fișier**: Optimizează stocarea pentru diferite tipuri de conținut  
+- **Scalare Progressive**: Creșterea limitelor pentru utilizatorii premium   
+ 
 
-- **Per-User Limits**: Prevent storage abuse
-- **File Type Limits**: Optimize for different content types
-- **Progressive Scaling**: Increase limits for premium users
-
-## 🔒 **Advanced Security & Validation Diagrams**
-
-### Multi-Layer Security Architecture
-
+### Arhitectura Securității pe Mai Multe Straturi
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────── ──┐
@@ -2127,7 +2091,7 @@ const sizeLimits = {
 └─────────────────────────────────────────────────────────────────────────── ──┘
 ```
 
-### File Validation & Sanitization Flow
+### Fluxul de Validare și Sanitizare a Fișierelor
 
 
 
@@ -2151,15 +2115,15 @@ const sizeLimits = {
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
 
-**Security Features:**  
-- **Multi-Layer Validation**: File extension, MIME type, and magic number verification  
-- **Virus Scanning**: Integration with security services for malware detection  
-- **Content Analysis**: Deep inspection of file contents for threats  
-- **Access Control**: Role-based permissions and audit logging  
-- **Encryption**: AES-256 encryption for all stored files  
-- **Compliance**: GDPR, HIPAA, and SOC 2 compliance features  
+**Funcții de Securitate:**  
+- **Validare pe Mai Multe Straturi**: Verificarea extensiei fișierului, tipului MIME și a semnăturii (magic number)  
+- **Scanare Virus**: Integrare cu servicii de securitate pentru detectarea malware-ului  
+- **Analiză de Conținut**: Inspectarea aprofundată a conținutului fișierelor pentru amenințări  
+- **Control al Accesului**: Permisiuni bazate pe rol și jurnalizare audit  
+- **Criptare**: Criptare AES-256 pentru toate fișierele stocate  
+- **Conformitate**: Funcții conforme GDPR, HIPAA și SOC 2  
 
-### Google Cloud Storage Integration Architecture
+### Arhitectura Integrării cu Google Cloud Storage
 
 
 ```
@@ -2197,15 +2161,15 @@ const sizeLimits = {
 └─────────────────────────────────────────────────────────────────────────── ──┘
 ```
 
-**Cloud Storage Features:**  
-- **Global CDN**: Fast file delivery worldwide  
-- **Version Control**: Automatic file versioning and rollback  
-- **Lifecycle Management**: Automatic archiving and deletion  
-- **Access Control**: Fine-grained permissions and signed URLs  
-- **Backup & Recovery**: Automated backup with point-in-time recovery  
-- **Compliance**: SOC 2, ISO 27001, and GDPR compliance  
+**Funcționalități Cloud Storage:**  
+- **CDN Global**: Livrare rapidă a fișierelor la nivel mondial  
+- **Control al Versiunilor**: Versionare automată și rollback al fișierelor  
+- **Managementul Ciclu de Viață**: Arhivare și ștergere automată  
+- **Control Acces**: Permisiuni detaliate și URL-uri semnate  
+- **Backup & Recuperare**: Backup automat cu recuperare la puncte în timp  
+- **Conformitate**: Conformitate SOC 2, ISO 27001 și GDPR  
 
-### File Processing & Optimization Pipeline
+### Pipeline de Procesare și Optimizare a Fișierelor
 
 
 
@@ -2229,16 +2193,15 @@ const sizeLimits = {
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
 
-**Processing Features:**  
-- **Metadata Extraction**: Automatic extraction of file properties  
-- **Thumbnail Generation**: Preview images for visual files  
-- **Compression**: Intelligent compression for optimal storage  
-- **Format Conversion**: Automatic format optimization  
-- **Search Indexing**: Full-text search capabilities  
-- **Performance Optimization**: Lazy loading and caching  
+**Funcționalități de Procesare:**  
+- **Extracție Metadata**: Extracție automată a proprietăților fișierelor  
+- **Generare Miniaturi**: Previziuni vizuale pentru fișiere  
+- **Compresie**: Compresie inteligentă pentru optimizarea stocării  
+- **Conversie Format**: Optimizare automată a formatului  
+- **Indexare pentru Căutare**: Capacități de căutare full-text  
+- **Optimizare Performanță**: Lazy loading și caching  
 
-### File Access Control & Permission System
-
+### Controlul Accesului și Sistemul de Permisiuni pentru Fișiere
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
@@ -2272,15 +2235,15 @@ const sizeLimits = {
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
 
-**Access Control Features:**  
-- **Role-Based Access**: Granular permissions based on user roles  
-- **Project-Level Security**: Files inherit project permissions  
-- **Temporary Access**: Time-limited sharing with expiration  
-- **Audit Logging**: Complete access history and tracking  
-- **Watermarking**: Automatic watermarking for sensitive files  
-- **Download Limits**: Configurable download restrictions  
+**Funcționalități de Control al Accesului:**  
+- **Acces Bazat pe Roluri**: Permisiuni detaliate în funcție de rolul utilizatorului  
+- **Securitate la Nivel de Proiect**: Fișierele moștenesc permisiunile proiectului  
+- **Acces Temporar**: Partajare limitată în timp cu expirare  
+- **Audit și Loguri**: Istoric complet al accesului și urmărire  
+- **Filigranare**: Adăugarea automată de watermark pentru fișiere sensibile  
+- **Limitări la Descărcare**: Restricții configurabile pentru descărcări  
 
-### File Search & Discovery System
+### Sistem de Căutare și Descoperire a Fișierelor
 
 
 ```
@@ -2316,15 +2279,15 @@ const sizeLimits = {
 └────────────────────────────────────────────────────────────────────────────┘
 ```
 
-**Search Features:**  
-- **Full-Text Search**: Search within file contents using OCR and indexing  
-- **Metadata Search**: Search by file properties, dates, and sizes  
-- **Tag System**: User-defined labels and categories for easy organization  
-- **Semantic Search**: AI-powered search understanding context and meaning  
-- **Advanced Filtering**: Multiple filter combinations for precise results  
-- **Search History**: Track and save search queries for future use  
+**Funcționalități de Căutare:**  
+- **Căutare Full-Text**: Căutare în conținutul fișierelor folosind OCR și indexare  
+- **Căutare după Metadate**: Căutare după proprietăți fișier, date și dimensiuni  
+- **Sistem de Etichete**: Etichete și categorii definite de utilizator pentru organizare ușoară  
+- **Căutare Semantică**: Căutare AI care înțelege contextul și sensul  
+- **Filtrare Avansată**: Combinații multiple de filtre pentru rezultate precise  
+- **Istoric Căutări**: Urmărirea și salvarea interogărilor pentru utilizări viitoare  
 
-### File Analytics & Reporting System
+### Sistem de Analiză și Raportare a Fișierelor
 
 
 ```
@@ -2360,15 +2323,16 @@ const sizeLimits = {
 └────────────────────────────────────────────────────────────────────────────┘
 ```
 
-**Analytics Features:**  
-- **Storage Insights**: Detailed storage usage and growth patterns  
-- **User Behavior**: Track file access patterns and user activity  
-- **Security Monitoring**: Real-time threat detection and security alerts  
-- **Compliance Reporting**: Automated compliance status and audit reports  
-- **Performance Metrics**: File upload/download performance tracking  
-- **Predictive Analytics**: AI-powered storage and usage predictions  
+**Funcționalități Analitice:**  
+- **Informații despre Stocare**: Detalii despre utilizarea spațiului și tipare de creștere  
+- **Comportament Utilizator**: Urmărirea accesului la fișiere și activității utilizatorilor  
+- **Monitorizare Securitate**: Detectare amenințări în timp real și alerte de securitate  
+- **Raportare Conformitate**: Stare automată de conformitate și rapoarte de audit  
+- **Măsurători de Performanță**: Monitorizarea performanței upload/download fișiere  
+- **Analiză Predictivă**: Previziuni AI privind stocarea și utilizarea  
 
-### File Backup & Disaster Recovery
+### Backup Fișiere & Recuperare în Caz de Dezastru
+
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
@@ -2404,15 +2368,16 @@ const sizeLimits = {
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
 
-**Backup Features:**  
-- **Real-time Replication**: Instant file synchronization across multiple locations  
-- **Incremental Backups**: Efficient backup strategy saving time and space  
-- **Point-in-Time Recovery**: Restore to any specific moment in time  
-- **Geographic Distribution**: Multiple data centers for disaster protection  
-- **Automated Testing**: Regular backup verification and recovery testing  
-- **Compliance Ready**: Meets regulatory requirements for data retention  
+**Funcționalități Backup:**  
+- **Replicare în Timp Real**: Sincronizare instantanee a fișierelor între mai multe locații  
+- **Backup Incremental**: Strategie eficientă de backup pentru economisirea timpului și spațiului  
+- **Recuperare la Moment Specific**: Restaurare la orice moment din timp  
+- **Distribuție Geografică**: Centre de date multiple pentru protecția împotriva dezastrului  
+- **Testare Automată**: Verificarea regulată a backup-urilor și testarea recuperării  
+- **Conformitate Reglementară**: Respectă cerințele legale pentru păstrarea datelor  
 
-### File Performance & Optimization
+### Performanța și Optimizarea Fișierelor
+
 
 
 ```
@@ -2448,15 +2413,16 @@ const sizeLimits = {
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
 
-**Performance Features:**  
-- **Multi-Level Caching**: Browser, CDN, Redis, and memory caching  
-- **Image Optimization**: Automatic compression and format conversion  
-- **Video Streaming**: Adaptive bitrate streaming for optimal performance  
-- **Document Preview**: Instant preview generation for common formats  
-- **Lazy Loading**: Load files only when needed  
-- **Progressive Enhancement**: Optimize for different network conditions  
+**Funcționalități de Performanță:**  
+- **Caching Multi-Nivel**: Cache în browser, CDN, Redis și memorie  
+- **Optimizare Imagini**: Compresie automată și conversie de format  
+- **Streaming Video**: Streaming adaptiv pentru performanță optimă  
+- **Previzualizare Documente**: Generare instantanee a previzualizărilor pentru formate comune  
+- **Încărcare Lazie**: Încărcarea fișierelor doar când este necesar  
+- **Îmbunătățire Progresivă**: Optimizare pentru diferite condiții de rețea  
 
-### File Integration & API System
+### Integrarea Fișierelor și Sistemul API
+
 
 
 ```
@@ -2492,16 +2458,15 @@ const sizeLimits = {
 └────────────────────────────────────────────────────────────────────────────┘
 ```
 
-**Integration Features:**  
-- **RESTful API**: Standard HTTP methods for all file operations  
-- **Webhook Support**: Real-time notifications for file events  
-- **SDK Libraries**: Client libraries for multiple programming languages  
-- **OAuth Integration**: Secure authentication with popular services  
-- **Event Streaming**: Real-time file activity updates  
-- **Batch Operations**: Efficient bulk file processing  
+**Funcționalități de Integrare:**  
+- **API RESTful**: Metode HTTP standard pentru toate operațiunile cu fișiere  
+- **Suport Webhook**: Notificări în timp real pentru evenimentele fișierelor  
+- **Biblioteci SDK**: Biblioteci client pentru mai multe limbaje de programare  
+- **Integrare OAuth**: Autentificare securizată cu servicii populare  
+- **Streaming Evenimente**: Actualizări în timp real pentru activitatea fișierelor  
+- **Operațiuni în Batch**: Procesare eficientă a fișierelor în volum mare  
 
-### File Compliance & Governance
-
+### Conformitate și Guvernanță a Fișierelor
 
 
 ```
@@ -2537,16 +2502,15 @@ const sizeLimits = {
 └────────────────────────────────────────────────────────────────────────────┘
 ```
 
-**Compliance Features:**  
-- **Data Classification**: Automatic classification of sensitive information  
-- **Retention Policies**: Configurable data retention and deletion rules  
-- **Audit Logging**: Complete audit trail for compliance reporting  
-- **Policy Enforcement**: Automated policy enforcement and monitoring  
-- **Privacy Controls**: GDPR-compliant data handling and consent management  
-- **Security Standards**: SOC 2, ISO 27001, and HIPAA compliance  
+**Funcționalități de Conformitate:**  
+- **Clasificarea Datelor**: Clasificare automată a informațiilor sensibile  
+- **Politici de Păstrare**: Reguli configurabile pentru păstrarea și ștergerea datelor  
+- **Audit Logging**: Traseu complet de audit pentru rapoarte de conformitate  
+- **Aplicarea Politicilor**: Monitorizare și aplicare automată a politicilor  
+- **Controale de Confidențialitate**: Gestionarea datelor conform GDPR și managementul consimțământului  
+- **Standardele de Securitate**: Conformitate SOC 2, ISO 27001 și HIPAA  
 
-### File Workflow & Automation
-
+### Flux de Lucru și Automatizare a Fișierelor
 
 
 ```
@@ -2583,15 +2547,15 @@ const sizeLimits = {
 └────────────────────────────────────────────────────────────────────────────┘
 ```
 
-**Workflow Features:**  
-- **Conditional Logic**: Smart rules based on file properties and content  
-- **Parallel Processing**: Multiple tasks executed simultaneously  
-- **Sequential Steps**: Ordered workflow execution with dependencies  
-- **Error Handling**: Automatic retry and fallback mechanisms  
-- **Approval Workflows**: Configurable approval processes for sensitive files  
-- **Integration Hooks**: Connect with external systems and services  
+**Funcționalități Workflow:**  
+- **Logică Condițională**: Reguli inteligente bazate pe proprietățile și conținutul fișierelor  
+- **Procesare Paralelă**: Mai multe sarcini executate simultan  
+- **Pași Secvențiali**: Executarea ordonată a fluxului de lucru cu dependențe  
+- **Gestionarea Erorilor**: Reîncercări și mecanisme de rezervă automate  
+- **Fluxuri de Aprobare**: Procese de aprobare configurabile pentru fișiere sensibile  
+- **Hook-uri de Integrare**: Conectare cu sisteme și servicii externe  
 
-### File Monitoring & Alerting
+### Monitorizarea Fișierelor și Alerta
 
 
 
@@ -2628,15 +2592,15 @@ const sizeLimits = {
 └────────────────────────────────────────────────────────────────────────────┘
 ```
 
-**Monitoring Features:**  
-- **Real-time Alerts**: Instant notifications for critical events  
-- **Threshold Monitoring**: Configurable limits and alerts  
-- **Anomaly Detection**: AI-powered pattern recognition  
-- **Performance Metrics**: Comprehensive system performance tracking  
-- **Security Monitoring**: Real-time security event detection  
-- **Escalation Rules**: Automatic escalation for critical issues  
+**Funcționalități de Monitorizare:**  
+- **Alerte în Timp Real**: Notificări instantanee pentru evenimente critice  
+- **Monitorizare Praguri**: Limite și alerte configurabile  
+- **Detectarea Anomaliilor**: Recunoaștere de tipare bazată pe AI  
+- **Metrici de Performanță**: Monitorizare cuprinzătoare a performanței sistemului  
+- **Monitorizare Securitate**: Detectarea evenimentelor de securitate în timp real  
+- **Reguli de Escaladare**: Escaladare automată pentru probleme critice  
 
-### File Scalability & Future Architecture
+### Scalabilitatea Fișierelor și Arhitectura Viitoare
 
 
 
@@ -2674,15 +2638,16 @@ const sizeLimits = {
 └────────────────────────────────────────────────────────────────────────────┘
 ```
 
-**Scalability Features:**  
-- **Horizontal Scaling**: Multiple server instances for load distribution  
-- **Vertical Scaling**: Increased resources for individual servers  
-- **Geographic Distribution**: Global CDN and edge locations  
-- **Load Balancing**: Intelligent traffic distribution and failover  
-- **Auto-scaling**: Automatic resource allocation based on demand  
-- **Future-Ready**: Architecture designed for emerging technologies  
+**Funcționalități de Scalabilitate:**  
+- **Scalare Orizontală**: Mai multe instanțe de server pentru distribuirea încărcării  
+- **Scalare Verticală**: Resurse crescute pentru servere individuale  
+- **Distribuție Geografică**: CDN global și locații edge  
+- **Echilibrare a Încărcării**: Distribuirea inteligentă a traficului și failover  
+- **Auto-scalare**: Alocarea automată a resurselor în funcție de cerere  
+- **Pregătit pentru Viitor**: Arhitectură proiectată pentru tehnologii emergente  
 
-### File Integration & Ecosystem
+### Integrarea Fișierelor & Ecosistem
+
 
 
 ```
@@ -2718,15 +2683,13 @@ const sizeLimits = {
 └────────────────────────────────────────────────────────────────────────────┘
 ```
 
-**Integration Features:**  
-- **Google Workspace**: Seamless integration with Google Drive and Docs  
-- **Microsoft 365**: Full compatibility with OneDrive and SharePoint  
-- **Adobe Creative Suite**: Direct integration with design tools  
-- **Communication Platforms**: Slack, Teams, and Discord integration  
-- **REST API**: Standard HTTP API for custom integrations  
-- **GraphQL API**: Flexible query language for complex data needs  
-
-### File User Experience & Interface
+**Funcționalități de Integrare:**  
+- **Google Workspace**: Integrare perfectă cu Google Drive și Docs  
+- **Microsoft 365**: Compatibilitate completă cu OneDrive și SharePoint  
+- **Adobe Creative Suite**: Integrare directă cu uneltele de design  
+- **Platforme de Comunicare**: Integrare cu Slack, Teams și Discord  
+- **REST API**: API HTTP standard pentru integrări personalizate  
+- **GraphQL API**: Limbaj flexibil de interogare pentru nevoi complexe de date
 
 
 
@@ -2765,20 +2728,17 @@ const sizeLimits = {
 └────────────────────────────────────────────────────────────────────────────┘
 ```
 
-**User Experience Features:**  
-- **Responsive Design**: Optimized for all devices and screen sizes  
-- **Dark Mode**: Comfortable viewing in low-light environments  
-- **Keyboard Navigation**: Full keyboard support for power users  
-- **Accessibility**: WCAG 2.1 AA compliance with screen reader support  
-- **Touch Interface**: Optimized for mobile and tablet devices  
-- **Customization**: User-configurable themes and layouts  
+**Funcționalități de Experiență a Utilizatorului:**  
+- **Design Responsiv**: Optimizat pentru toate dispozitivele și dimensiunile de ecran  
+- **Mod Întunecat**: Vizualizare confortabilă în medii cu lumină scăzută  
+- **Navigare prin Tastatură**: Suport complet pentru utilizatorii avansați  
+- **Accesibilitate**: Conformitate WCAG 2.1 AA cu suport pentru cititoare de ecran  
+- **Interfață Tactilă**: Optimizat pentru dispozitive mobile și tablete  
+- **Personalizare**: Tematici și layout-uri configurabile de utilizator  
 
+### Securitatea Conținutului
 
-
-
-### Content Security
-
-**Virus Scanning Integration**
+**Integrare Scanare Virus**
 
 ```javascript
 // Integration with ClamAV or similar
@@ -2819,31 +2779,28 @@ const processImage = async (fileBuffer, mimeType) => {
 ```
 
 
-# Chapter 8: Deployment & Scaling
+# Capitolul 8: Deploy & Scalare
 
-## Overview
+Deploy-ul și scalarea sunt faze critice în ciclul de viață al aplicației. Acest capitol acoperă strategiile de deploy în producție, containerizarea cu Docker și abordările de scalare verticală și orizontală. Vom explora cum să ducem Sync de la dezvoltare la producție și să-l pregătim pentru utilizarea la scară enterprise.  
 
-Deployment and scaling are critical phases in the application lifecycle. This chapter covers production deployment strategies, containerization with Docker, and both vertical and horizontal scaling approaches. We'll explore how to take Sync from development to production and prepare it for enterprise-scale usage.
-
-## Containerization with Docker
-
-### Development Dockerfile
+### Dockerfile pentru Dezvoltare
 
 ```dockerfile
 # Dockerfile.dev
 FROM node:18-alpine
 
-# Set working directory
+# Setează directorul de lucru
 WORKDIR /app
 
-# Copy package files
+# Copiază fișierele package
 COPY package*.json ./
 
-# Install dependencies
+# Instalează dependențele
 RUN npm ci --only=production
 
 ENTRYPOINT ["dumb-init", "--"]
 CMD ["node", "src/server.js"]
+
 ```
 
 ### Docker Compose for Production
@@ -2921,7 +2878,7 @@ volumes:
   postgres_prod_data:
   redis_prod_data:
 ```
-## Scaling Strategies
+
 
 ### Vertical Scaling
 
@@ -2985,94 +2942,60 @@ const server = http.createServer((req, res) => {
 server.listen(8080);
 ```
 
-# Bibliography
+# Bibliografie
 
-## Primary Technologies & Frameworks
+## Tehnologii și Framework-uri Principale
 
-### Backend Technologies
+### Tehnologii Backend
 
-**Node.js**
-- Node.js Foundation. (2024). Node.js Documentation. https://nodejs.org/docs/
+**Node.js**  
+- Node.js Foundation. (2024). Documentația Node.js. https://nodejs.org/docs/
 
-**Express.js**
-- StrongLoop, IBM, and other contributors. (2024). Express.js - Fast, unopinionated, minimalist web framework for Node.js. https://expressjs.com/
+**Express.js**  
+- StrongLoop, IBM și alți contribuitori. (2024). Express.js – Framework web rapid, minimalist și neopinativ pentru Node.js. https://expressjs.com/
 
+**PostgreSQL**  
+- PostgreSQL Global Development Group. (2024). PostgreSQL: Cel mai avansat sistem de baze de date relaționale open-source. https://www.postgresql.org/
 
-**PostgreSQL**
-- PostgreSQL Global Development Group. (2024). PostgreSQL: The World's Most Advanced Open Source Relational Database. https://www.postgresql.org/
+**Prisma ORM**  
+- Documentația Prisma. (2024). Prisma Client, Prisma Migrate și Prisma Studio. https://www.prisma.io/docs/
 
+### Tehnologii Frontend
 
-**Prisma ORM**
-- Prisma Documentation. (2024). Prisma Client, Prisma Migrate, and Prisma Studio. https://www.prisma.io/docs/
+**React**  
+- Facebook, Inc. (2024). React – Bibliotecă JavaScript pentru construirea interfețelor de utilizator. https://reactjs.org/
 
-### Frontend Technologies
+**Vite**  
+- Documentația Vite. (2024). Unealtă de build care oferă o experiență de dezvoltare mai rapidă și mai eficientă. https://vitejs.dev/guide/
 
-**React**
-- Facebook, Inc. (2024). React – A JavaScript library for building user interfaces. https://reactjs.org/
+**JavaScript**  
+- ECMAScript. (2024). Specificația limbajului ECMAScript. https://tc39.es/ecma262/
 
+**TailwindCSS**  
+- Documentația Tailwind CSS. (2024). Construiește rapid site-uri moderne fără a părăsi HTML-ul. https://tailwindcss.com/docs
 
-**Vite**
-- Vite Documentation. (2024). Build tool that aims to provide a faster and leaner development experience. https://vitejs.dev/guide/
+### Gestionarea Stării
 
-**JavaScript**
-- ECMAScript. (2024). ECMAScript Language Specification. https://tc39.es/ecma262/
+**Zustand**  
+- Documentația Zustand. (2024). Gestionare simplă a stării pentru React. https://github.com/pmndrs/zustand#readme
 
+### Gestionarea Formularelor
 
-**TailwindCSS**
-- Tailwind CSS Documentation. (2024). Rapidly build modern websites without ever leaving your HTML. https://tailwindcss.com/docs
+**Formik**  
+- Documentația Formik. (2024). Gestionarea stării formularelor și validare pentru React. https://formik.org/docs/overview
 
-### State Management
+**Yup**  
+- Documentația Yup. (2024). Validator și parser de obiecte JavaScript. https://github.com/jquense/yup#api
 
-**Zustand**
-- Zustand Documentation. (2024). Simple state management for React. https://github.com/pmndrs/zustand#readme
+### Autentificare & Securitate
 
-### Form Management
+**JSON Web Tokens (JWT)**  
+- Auth0. (2024). JWT.io – Debugger pentru JSON Web Tokens. https://jwt.io/
 
-**Formik**
-- Formik Documentation. (2024). Form state management and validation for React. https://formik.org/docs/overview
+**Bcrypt**  
+- Documentația Bcrypt. (2024). Bibliotecă pentru criptarea parolelor. https://github.com/dcodeIO/bcrypt.js
 
-**Yup**
-- Yup Documentation. (2024). JavaScript object schema validator and object parser. https://github.com/jquense/yup#api
+**Helmet.js**  
+- Documentația Helmet. (2024). Middleware de securitate pentru Express.js. https://helmetjs.github.io/docs/
 
-### Authentication & Security
-
-**JSON Web Tokens (JWT)**
-- Auth0. (2024). JWT.io - JSON Web Token Debugger. https://jwt.io/
-
-**Bcrypt**
-- Bcrypt Documentation. (2024). bcrypt - A library to help you hash passwords. https://github.com/dcodeIO/bcrypt.js
-
-**Helmet.js**
-- Helmet Documentation. (2024). Security middleware for Express.js. https://helmetjs.github.io/docs/
-
-### File Handling & Storage
-
-**Google Cloud Storage**
-- Google Cloud Documentation. (2024). Store and serve large amounts of data. https://cloud.google.com/storage/docs
-
-### Development Tools
-
-**Git**
-- Torvalds, L., & Hamano, J. (2024). Git - Distributed version control system. https://git-scm.com/
-
-### Deployment & DevOps
-
-**Docker**
-- Docker Documentation. (2024). Container platform for developers and DevOps. https://docs.docker.com/
-
-### Security Standards & Best Practices
-
-**CORS**
-- MDN Web Docs. (2024). Cross-Origin Resource Sharing (CORS). https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
-
-**CSRF Protection**
-- MDN Web Docs. (2024). Cross-Site Request Forgery (CSRF). https://developer.mozilla.org/en-US/docs/Glossary/CSRF
-
-### Database Design & Migration
-
-**Prisma Migrations**
-- Prisma Documentation. (2024). Database schema migrations. https://www.prisma.io/docs/concepts/components/prisma-migrate
-
-
-
-
+### Gestiona
