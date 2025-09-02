@@ -73,10 +73,18 @@ sed 's/[✅❌🏢📁🔧📦⚠️🎉📖📊📄🚀💡🧹🎯🏗🎨🔄
 echo "🔧 Cleaning up formatting..."
 
 # Clean up chapter formatting for better PDF generation
-sed -i 's/^# Chapter \([0-9]*\): \(.*\)$/# \2/g' ../build/complete-book-clean.md
+# The book is now in Romanian "Capitolul" format
+echo "🔧 Ensuring proper Romanian chapter format..."
 
-# Remove duplicate chapter titles (Chapter X and Chapter X: Title)
-sed -i '/^# Chapter [0-9]*$/d' ../build/complete-book-clean.md
+# Remove any standalone chapter number lines
+sed -i '/^# Capitolul [0-9]*$/d' ../build/complete-book-clean.md
+
+# Ensure preface sections are properly marked as unnumbered
+sed -i 's/^## Prefață {.frontmatter}/## Prefață/g' ../build/complete-book-clean.md
+sed -i 's/^## Informații despre carte {.unnumbered .frontmatter}/## Informații despre carte/g' ../build/complete-book-clean.md
+
+# Mark the main title and preface sections as unnumbered for proper chapter counting
+sed -i 's/^# SYNC - Aplicație Full-Stack de Management al Sarcinilor {.frontmatter}/# SYNC - Aplicație Full-Stack de Management al Sarcinilor/g' ../build/complete-book-clean.md
 
 
 
@@ -95,6 +103,7 @@ pandoc ../build/complete-book-final.md -o "Sync_documentation.pdf" \
   --pdf-engine=xelatex \
   --toc \
   --number-sections \
+  --top-level-division=chapter \
   -V geometry:margin=1in \
   -V fontsize=11pt \
   -V mainfont="Liberation Serif" \
@@ -106,8 +115,8 @@ pandoc ../build/complete-book-final.md -o "Sync_documentation.pdf" \
   -V papersize=a4 \
   -V linestretch=1.1 \
   -V parskip=0.3em \
-  -V header-includes="\\usepackage{fancyhdr}\\pagestyle{fancy}\\fancyhf{}\\fancyhead[L]{}\\fancyhead[R]{}\\renewcommand{\\headrulewidth}{0pt}" \
-  -V include-in-header="\\usepackage{enumitem}\\setlist[itemize]{leftmargin=*}\\setlist[enumerate]{leftmargin=*}\\usepackage{booktabs}\\usepackage{longtable}\\usepackage{graphicx}\\usepackage{float}\\usepackage{framed}\\newenvironment{Shaded}{\\begin{shaded*}}{\\end{shaded*}}\\definecolor{shadecolor}{RGB}{248,248,248}\\usepackage{titlesec}\\titlespacing*{\\chapter}{0pt}{2ex plus 0.5ex minus .1ex}{2ex plus .1ex}"
+  -V header-includes="\\usepackage{fancyhdr}\\pagestyle{fancy}\\fancyhf{}\\fancyhead[L]{}\\fancyhead[R]{}\\renewcommand{\\headrulewidth}{0pt}\\usepackage{titlesec}\\titleformat{\\chapter}[display]{\\normalfont\\huge\\bfseries}{Capitolul\\ \\thechapter}{20pt}{\\Huge}" \
+  -V include-in-header="\\usepackage{enumitem}\\setlist[itemize]{leftmargin=*}\\setlist[enumerate]{leftmargin=*}\\usepackage{booktabs}\\usepackage{longtable}\\usepackage{graphicx}\\usepackage{float}\\usepackage{framed}\\newenvironment{Shaded}{\\begin{shaded*}}{\\end{shaded*}}\\definecolor{shadecolor}{RGB}{248,248,248}\\usepackage{titlesec}\\titlespacing*{\\chapter}{0pt}{2ex plus 0.5ex minus .1ex}{2ex plus .1ex}\\setcounter{chapter}{0}"
 
 # If Liberation fonts failed, try with default fonts
 if [ ! -f "Sync_documentation.pdf" ]; then
@@ -127,7 +136,7 @@ if [ ! -f "Sync_documentation.pdf" ]; then
       -V linestretch=1.1 \
       -V parskip=0.3em \
       -V header-includes="\\usepackage{fancyhdr}\\pagestyle{fancy}\\fancyhf{}\\fancyhead[L]{}\\fancyhead[R]{}\\renewcommand{\\headrulewidth}{0pt}" \
-      -V include-in-header="\\usepackage{enumitem}\\setlist[itemize]{leftmargin=*}\\setlist[enumerate]{leftmargin=*}\\usepackage{booktabs}\\usepackage{longtable}\\usepackage{graphicx}\\usepackage{float}\\usepackage{framed}\\newenvironment{Shaded}{\\begin{shaded*}}{\\end{shaded*}}\\definecolor{shadecolor}{RGB}{248,248,248}"
+      -V include-in-header="\\usepackage{enumitem}\\setlist[itemize]{leftmargin=*}\\setlist[enumerate]{leftmargin=*}\\usepackage{booktabs}\\usepackage{longtable}\\usepackage{graphicx}\\usepackage{float}\\usepackage{framed}\\newenvironment{Shaded}{\\begin{shaded*}}{\\end{shaded*}}\\definecolor{shadecolor}{RGB}{248,248,248}\\setcounter{chapter}{0}"
 fi
 
 # Clean up temporary file

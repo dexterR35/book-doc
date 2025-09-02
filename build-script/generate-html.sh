@@ -19,18 +19,35 @@ if ! command -v pandoc &> /dev/null; then
     exit 1
 fi
 
+# Create a cleaned version for HTML generation
+echo "🧹 Preparing content for HTML generation..."
+cp ../build/complete-book.md ../build/complete-book-html.md
+
+# Clean up any problematic characters or formatting
+echo "🔧 Cleaning up formatting for HTML..."
+
+# Remove leading empty lines and problematic characters
+sed -i '/./,$!d' ../build/complete-book-html.md
+
+# Remove any standalone chapter number lines
+sed -i '/^# Capitolul [0-9]*$/d' ../build/complete-book-html.md
+
+# Ensure preface sections are properly marked
+sed -i 's/^## Prefață {.frontmatter}/## Prefață/g' ../build/complete-book-html.md
+sed -i 's/^## Informații despre carte {.unnumbered .frontmatter}/## Informații despre carte/g' ../build/complete-book-html.md
+
+# Mark the main title and preface sections as unnumbered for proper chapter counting
+sed -i 's/^# SYNC - Aplicație Full-Stack de Management al Sarcinilor {.frontmatter}/# SYNC - Aplicație Full-Stack de Management al Sarcinilor/g' ../build/complete-book-html.md
+
 # Generate HTML with clean styling
 echo "🔄 Generating HTML..."
-pandoc ../build/complete-book.md \
+pandoc ../build/complete-book-html.md \
   -o "Sync_documentation.html" \
   --standalone \
   --toc \
   --number-sections \
   --top-level-division=chapter \
-  --css=style.css \
-  --metadata title="SYNC - Full-Stack Task Management Application" \
-  --metadata author="Nae Ioana" \
-  --metadata date="2025"
+  --css=style.css
 
 # Check if HTML was generated successfully
 if [ -f "Sync_documentation.html" ]; then
@@ -45,7 +62,15 @@ if [ -f "Sync_documentation.html" ]; then
     echo ""
     echo "🚀 Your Sync book HTML is ready!"
     echo "💡 You can open it in any web browser"
+    echo "💡 Features:"
+    echo "   • Romanian chapter titles (Capitolul 1, Capitolul 2, etc.)"
+    echo "   • Table of Contents"
+    echo "   • Numbered sections"
+    echo "   • Professional styling with CSS"
 else
     echo "❌ HTML generation failed!"
     echo "💡 Try running: pandoc --version"
 fi
+
+# Clean up temporary file
+rm ../build/complete-book-html.md

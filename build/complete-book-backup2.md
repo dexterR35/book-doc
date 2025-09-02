@@ -1,24 +1,60 @@
+# SYNC - Full-Stack Task Management Application 
 
+**A Comprehensive Technical Guide to Building Enterprise-Grade Project Management Solutions**
 
-# SYNC - Aplicație Full-Stack de Management al Sarcinilor {.frontmatter}
+---
+# SYNC - Aplicație Full-Stack de Management al Sarcinilor
 
-**Un ghid tehnic pentru construirea soluțiilor de management de proiect la nivel enterprise**
+**Un ghid tehnic complet pentru construirea soluțiilor de management de proiect la nivel enterprise**
 
 ---
 
-## Prefață {.frontmatter}
+## Prefață
 
-Bine ați venit la "SYNC" - un ghid pentru construirea aplicațiilor moderne și scalabile de management al sarcinilor. Această documentatie reprezintă rezultatul unei cercetări extinse, experienței practice în dezvoltare și a unei înțelegeri profunde a nevoilor organizațiilor în mediul digital rapid de astăzi.
+Bine ați venit la "SYNC" - un ghid complet pentru construirea aplicațiilor moderne și scalabile de management al sarcinilor. Această carte reprezintă rezultatul unei cercetări extinse, experienței practice în dezvoltare și a unei înțelegeri profunde a nevoilor organizațiilor în mediul digital rapid de astăzi.
+
+### Despre această carte
+
+Acest ghid tehnic este destinat dezvoltatorilor, arhitecților și liderilor tehnici care doresc să înțeleagă cum să construiască aplicații gata de producție care pot scala odată cu nevoile afacerii. Acoperă totul, de la deciziile inițiale de arhitectură până la strategiile de implementare, cu accent pe implementarea practică, mai degrabă decât pe concepte teoretice.
+
+Cartea este structurată pentru a oferi atât perspective arhitecturale de nivel înalt, cât și ghidaj detaliat de implementare, făcând-o potrivită pentru cititori cu diferite niveluri de expertiză tehnică. Fie că sunteți un dezvoltator junior care dorește să înțeleagă practicile moderne de dezvoltare sau un arhitect experimentat care caută să-și valideze abordarea, veți găsi informații valoroase în paginile acestei cărți.
+
+### Ce veți învăța
+
+- **Pattern-uri moderne de arhitectură**: Cum să proiectați sisteme care pot evolua odată cu cerințele în schimbare
+- **Cele mai bune practici de securitate**: Implementarea securității la nivel enterprise de la zero
+- **Optimizarea performanței**: Tehnici pentru construirea aplicațiilor care funcționează bine sub încărcare
+- **Strategii de scalabilitate**: Abordări pentru proiectarea sistemelor care pot crește odată cu afacerea
+- **Tehnici de integrare**: Cum să conectați aplicația dvs. cu servicii și API-uri externe
+- **Implementare și DevOps**: Strategii pentru a aduce aplicația în producție în siguranță și eficient
+
+### Pentru cine este această carte
+
+Această carte este destinată:  
+- **Dezvoltatori software** care doresc să construiască aplicații mai bune  
+- **Arhitecți de sistem** care trebuie să proiecteze soluții scalabile  
+- **Lideri tehnici** care doresc să-și ghideze echipele eficient  
+- **Ingineri DevOps** care trebuie să înțeleagă arhitectura aplicației  
+- **Manageri de proiect** care doresc să înțeleagă constrângerile și oportunitățile tehnice
+
+### Cum să folosiți această carte
+
+Fiecare capitol se construiește pe baza celor precedente, așadar recomandăm citirea lor în ordine. Cu toate acestea, dacă sunteți interesat de un subiect specific, puteți sări direct la capitolul relevant. Cartea include:
+
+- **Exemple de cod**: Cod real și funcțional pe care îl puteți folosi ca punct de plecare  
+- **Diagrame de arhitectură**: Reprezentări vizuale ale conceptelor complexe  
+- **Cele mai bune practici**: Ghiduri bazate pe experiența din lumea reală  
+- **Capcane comune**: Ce trebuie evitat atunci când construiți aplicații similare
 
 ---
 
-## Informații despre carte {.unnumbered .frontmatter}
+## Informații despre carte
 
 **Titlu:** SYNC - Aplicație Full-Stack de Management al Sarcinilor  
-**Subtitlu:** Un ghid tehnic pentru construirea soluțiilor de management de proiect la nivel enterprise  
+**Subtitlu:** Un ghid tehnic complet pentru construirea soluțiilor de management de proiect la nivel enterprise  
 **Autor:** Nae Ioana  
 **Versiune:** 1.0  
-**Tip Document:** Ghid tehnic   
+**Tip Document:** Ghid tehnic & Manual de implementare  
 **GitHub:** [github.com/naeioana](https://github.com/naeioana)  
 **Website:** [testApp.Sync.ro](https://testApp.Sync.ro)  
 **Data:** 2025  
@@ -34,9 +70,9 @@ Bine ați venit la "SYNC" - un ghid pentru construirea aplicațiilor moderne și
 ---
 
 
-#  Introducere
+# Capitolul 1: Introducere
 
-##  REZUMAT TEHNIC
+## SYNC - REZUMAT TEHNIC
 
 ### Ce este această aplicație?
 
@@ -458,7 +494,7 @@ Următoarele capitole vor aprofunda aspectele tehnice:
 - **Management Sarcini**: Implementarea Kanban și workflow  
 - **Deployment & Scalare**: Strategii de implementare în producție  
 
-#  Project Setup & Folder Structure
+# Project Setup & Folder Structure
 
 ## Exemplu Configurare Dezvoltare
 
@@ -1087,10 +1123,11 @@ router.get('/', taskController.getTasks);
 router.get('/:id', taskController.getTaskById);
 router.put('/:id', validateTaskInput, taskController.updateTask);
 router.delete('/:id', taskController.deleteTask);
+
 // Actualizări ale statusului sarcinilor
 router.patch('/:id/status', taskController.updateTaskStatus);
 
-
+// Exportă router-ul
 ```
 
 
@@ -1737,7 +1774,7 @@ KanbanCard.displayName = 'KanbanCard';
 - **Interfață prietenoasă pentru touch**: Optimizată pentru interacțiuni mobile  
 - **Monitorizarea performanței**: Metrici de performanță în timp real  
 
-#  Gestionarea Sarcinilor & Kanban
+# Capitolul 6: Gestionarea Sarcinilor & Kanban
 
 ### Prezentare Generală a Arhitecturii Kanban
 
@@ -1973,13 +2010,14 @@ const initialColumns = {
 ```
 
 
-#  Gestionarea Fișierelor & Stocare
+# Capitolul 7: Gestionarea Fișierelor & Stocare
 
 ## Prezentare Generală
 
 Gestionarea și stocarea fișierelor reprezintă componente critice ale oricărei aplicații de producție. În Sync, am implementat o soluție care combină securitatea, performanța și scalabilitatea prin integrarea Google Cloud Storage. Acest capitol explorează implementarea tehnică, considerațiile de securitate și strategiile de implementare în mediul real.
 
 ## Arhitectura Gestionării Fișierelor
+
 
 ```
 Arhitectura Fluxului de Încărcare a Fișierelor:
@@ -2829,7 +2867,7 @@ const processImage = async (fileBuffer, mimeType) => {
 ```
 
 
-# Deployment & Scaling
+#  Deployment & Scaling
 
 Deploy-ul și scalarea sunt faze critice în ciclul de viață al aplicației. Acest capitol acoperă strategiile de deploy în producție, containerizarea cu Docker și abordările de scalare verticală și orizontală. Vom explora cum să ducem Sync de la dezvoltare la producție și să-l pregătim pentru utilizarea la scară enterprise.  
 
